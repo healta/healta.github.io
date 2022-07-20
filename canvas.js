@@ -3,10 +3,6 @@ const ctx = canvas.getContext("2d");
 canvas.width = 800;
 canvas.height = 800;
  
-//let array = [[Array.from({length:20}, () => Math.round(Math.random()))],[Array.from({length:20}, () => Math.round(Math.random()))],[Array.from({length:20}, () => Math.round(Math.random()))],[Array.from({length:20}, () => Math.round(Math.random()))],[Array.from({length:20}, () => Math.round(Math.random()))],[Array.from({length:20}, () => Math.round(Math.random()))],[Array.from({length:20}, () => Math.round(Math.random()))],[Array.from({length:20}, () => Math.round(Math.random()))],[Array.from({length:20}, () => Math.round(Math.random()))],[Array.from({length:20}, () => Math.round(Math.random()))],[Array.from({length:20}, () => Math.round(Math.random()))],[Array.from({length:20}, () => Math.round(Math.random()))],[Array.from({length:20}, () => Math.round(Math.random()))],[Array.from({length:20}, () => Math.round(Math.random()))],[Array.from({length:20}, () => Math.round(Math.random()))],[Array.from({length:20}, () => Math.round(Math.random()))],[Array.from({length:20}, () => Math.round(Math.random()))],[Array.from({length:20}, () => Math.round(Math.random()))],[Array.from({length:20}, () => Math.round(Math.random()))],[Array.from({length:20}, () => Math.round(Math.random()))]];
-
-//let arrayx = [[0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,],[0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,1,1,1,0,0,1,0,0,1,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,]]
-
 let y = []
 let array = []
 let yy = []
@@ -32,19 +28,13 @@ const arrayZero =() =>{
 
 
 
-const arrToUse = arrayZero()
-
-
-
-
-function animate(arr1){
+function animate(){
     ctx.clearRect(0,0,canvas.width, canvas.height);
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "white";
     
     
-    // console.log(arrToUse);
     
     for (let i = 0; i<80; i++){
         for (let ii=0;ii<80;ii++){
@@ -146,11 +136,9 @@ function animate(arr1){
             }
         }
     }
-    
-    //array = [...bufferArray];
-    
+        
 
-    array = [...bufferArray]
+    array = bufferArray
 
 
     
@@ -158,34 +146,12 @@ function animate(arr1){
     bufferArray = arrayZero();
     
     
-    // bufferArray = []
-    
-    
-    
-    //for (let i = 0; i<40; i++){
-    //    yy = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    //    bufferArray.push(yy)
-    //}
-    //console.log(bufferArray)
-    
-    //onsole.log(arrToUse)
 }
 
 
 
 let intervalId = window.setInterval(function(){
-   animate(arrToUse)
+   animate()
  }, 10);
-  
-// animate()
-
-
-
-//document.addEventListener('keyup', event => {
-//    if (event.code === 'Enter') {
-//      animate()
-//    }
-//  })
-// 
 
 
