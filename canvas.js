@@ -1,15 +1,15 @@
 const canvas = document.getElementById("canvas1");
 const ctx = canvas.getContext("2d");
-let widthCanvas = 8000;
-let heightCanvas = 8000;
+let widthCanvas = 1000;
+let heightCanvas = 1000;
 
 let y = []
 let array = []
 let yy = []
 let bufferArray=[]
 
-for (let i = 0; i<800; i++){
-    y = Array.from({length:800}, () => Math.round(Math.random()))
+for (let i = 0; i<100; i++){
+    y = Array.from({length:100}, () => Math.round(Math.random()))
     array.push(y)
 }
 
@@ -17,24 +17,27 @@ for (let i = 0; i<800; i++){
 
 const arrayZero =() =>{
     let arr1 = []
-    for (let i = 0; i<800; i++){
-        yy = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    for (let i = 0; i<100; i++){
+        yy = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         arr1.push(yy)
     }
     return arr1
 }
 
+static = arrayZero()
 
- let cameraOffset = { x: window.innerWidth/10, y: window.innerHeight/10 }
- let cameraZoom = 1.2
+
+ let cameraOffset = { x: window.innerWidth/1000, y: window.innerHeight/1000 }
+ let cameraZoom = 1
  let MAX_ZOOM = 5
  let MIN_ZOOM = 0.1
  let SCROLL_SENSITIVITY = 0.0005
  
  function draw()
  {
-     canvas.width = window.innerWidth
-     canvas.height = window.innerHeight
+     canvas.width = 1000;
+     canvas.height = 1000
+     console.log(window.innerHeight)
      
      // Translate to the canvas centre before zooming - so you'll always zoom on what you're looking directly at
      ctx.translate( window.innerWidth / 2, window.innerHeight / 2 )
@@ -49,23 +52,22 @@ const arrayZero =() =>{
      
      
      
-     for (let i = 0; i<800; i++){
-         for (let ii=0;ii<800;ii++){
-             try{
-                 if (array[i][ii] == 1){
-                  ctx.fillRect(i*10,ii*10,10,10)
-                 }
-         }catch(e){}
+     for (let i = 0; i<100; i++){
+         for (let ii=0;ii<100;ii++)    
+             if (array[i][ii] == 1){
+              ctx.fillRect(i*10,ii*10,10,10)
+             }
+
          }
          
-         }
+         
      
  
      bufferArray = arrayZero();
      
      
-     for (let i=0; i<800; i++){
-         for (let ii=0;ii<800;ii++){
+     for (let i=0; i<100; i++){
+         for (let ii=0;ii<100;ii++){
              let neighbour=0;
              try{
                  if (array[i+1][ii+1]==1){
@@ -156,8 +158,6 @@ const arrayZero =() =>{
  
      
      
-     bufferArray = arrayZero();
-     
      
  }
 
@@ -175,16 +175,6 @@ const arrayZero =() =>{
      }
  }
  
- function drawRect(x, y, width, height)
- {
-     ctx.fillRect( x, y, width, height )
- }
- 
- function drawText(text, x, y, size, font)
- {
-     ctx.font = `${size}px ${font}`
-     ctx.fillText(text, x, y)
- }
  
  let isDragging = false
  let dragStart = { x: 0, y: 0 }
@@ -277,7 +267,6 @@ const arrayZero =() =>{
  canvas.addEventListener('touchmove', (e) => handleTouch(e, onPointerMove))
  canvas.addEventListener( 'wheel', (e) => adjustZoom(e.deltaY*SCROLL_SENSITIVITY))
  
- // Ready, set, go
  let intervalId = window.setInterval(function(){
     draw()
     }, 100);
