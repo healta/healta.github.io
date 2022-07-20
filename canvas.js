@@ -35,7 +35,7 @@ static = arrayZero()
  
  function draw()
  {
-     canvas.width = 1000;
+     canvas.width = 1000
      canvas.height = 1000
      console.log(window.innerHeight)
      
@@ -46,20 +46,32 @@ static = arrayZero()
 
 
      ctx.clearRect(0,0,widthCanvas, heightCanvas);
-     ctx.fillStyle = "black";
+     ctx.fillStyle = "grey";
      ctx.fillRect(0, 0, widthCanvas, heightCanvas);
-     ctx.fillStyle = "white";
+     ctx.fillStyle = "yellow";
      
      
      
      for (let i = 0; i<100; i++){
          for (let ii=0;ii<100;ii++)    
              if (array[i][ii] == 1){
-              ctx.fillRect(i*10,ii*10,10,10)
+              ctx.fillRect(i*10,ii*10,9,9)
              }
 
          }
-         
+    
+    for (let i=0;i<1000;i= i+10){
+
+    ctx.beginPath();
+    ctx.moveTo(i, 0);
+    ctx.lineTo(i, 1000);
+    ctx.stroke();
+    ctx.moveTo(0,i)
+    ctx.lineTo(1000,i)
+    ctx.stroke()
+
+    }
+    
          
      
  
