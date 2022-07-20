@@ -11,5 +11,11 @@
     height: 800px
     
     }
+    
 
+.canvas-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
     

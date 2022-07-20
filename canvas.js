@@ -13,7 +13,7 @@ for (let i = 0; i<100; i++){
     array.push(y)
 }
 
-
+console.log("Hello there!")
 
 const arrayZero =() =>{
     let arr1 = []
@@ -37,7 +37,6 @@ static = arrayZero()
  {
      canvas.width = 1000
      canvas.height = 1000
-     console.log(window.innerHeight)
      
      // Translate to the canvas centre before zooming - so you'll always zoom on what you're looking directly at
      ctx.translate( window.innerWidth / 2, window.innerHeight / 2 )
@@ -55,11 +54,13 @@ static = arrayZero()
      for (let i = 0; i<100; i++){
          for (let ii=0;ii<100;ii++)    
              if (array[i][ii] == 1){
-              ctx.fillRect(i*10,ii*10,9,9)
+              ctx.fillRect(i*10,ii*10,10,10)
              }
 
          }
     
+
+         
     for (let i=0;i<1000;i= i+10){
 
     ctx.beginPath();
