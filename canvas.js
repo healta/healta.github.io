@@ -33,7 +33,7 @@ static = arrayZero()
  let MIN_ZOOM = 0.1
  let SCROLL_SENSITIVITY = 0.0005
  
- function draw()
+ function draw(controlArray)
  {
      canvas.width = 1000
      canvas.height = 1000
@@ -126,41 +126,42 @@ static = arrayZero()
      
      
              if (array[i][ii] == 1 && neighbour == 0) {
-                 bufferArray[i][ii]=0;
+                 bufferArray[i][ii]=controlArray[9];
              }else if (array[i][ii] == 1 && neighbour == 1){
-                 bufferArray[i][ii]=0;
+                 bufferArray[i][ii]=controlArray[10];
              }else if (array[i][ii] == 1 && neighbour == 2){
-                 bufferArray[i][ii]=1;
+                 bufferArray[i][ii]=controlArray[11];
              }else if (array[i][ii] == 1 && neighbour == 3){
-                 bufferArray[i][ii]=1;
+                 bufferArray[i][ii]=controlArray[12];
              }else if (array[i][ii] == 1 && neighbour ==4){
-                 bufferArray[i][ii]=0;
+                 bufferArray[i][ii]=controlArray[13];
              }else if (array[i][ii] == 1 && neighbour == 5){
-                 bufferArray[i][ii]=0;
+                 bufferArray[i][ii]=controlArray[14];
              }else if (array[i][ii] == 1 && neighbour ==6){
-                 bufferArray[i][ii]=0;
+                 bufferArray[i][ii]=controlArray[15];
              }else if (array[i][ii] == 1 && neighbour ==7){
-                 bufferArray[i][ii]=0;
+                 bufferArray[i][ii]=controlArray[16];
              }else if (array[i][ii] == 1 && neighbour ==8){
-                 bufferArray[i][ii]=0;
+                 bufferArray[i][ii]=controlArray[17];
+
              }else if (array[i][ii] == 0 && neighbour ==0){
-                 bufferArray[i][ii]=0;
+                 bufferArray[i][ii]=controlArray[0];
              }else if (array[i][ii] == 0 && neighbour ==1){
-                 bufferArray[i][ii]=0;
+                 bufferArray[i][ii]=controlArray[1];
              }else if (array[i][ii] == 0 && neighbour ==2){
-                 bufferArray[i][ii]=0;
+                 bufferArray[i][ii]=controlArray[2];
              }else if (array[i][ii] == 0 && neighbour ==3){
-                 bufferArray[i][ii]=1;
+                 bufferArray[i][ii]=controlArray[3];
              }else if (array[i][ii] == 0 && neighbour ==4){
-                 bufferArray[i][ii]=0;
+                 bufferArray[i][ii]=controlArray[4];
              }else if (array[i][ii] == 0 && neighbour ==5){
-                 bufferArray[i][ii]=0;
+                 bufferArray[i][ii]=controlArray[5];
              }else if (array[i][ii] == 0 && neighbour ==6){
-                 bufferArray[i][ii]=0;
+                 bufferArray[i][ii]=controlArray[6];
              }else if (array[i][ii] == 0 && neighbour ==7){
-                 bufferArray[i][ii]=0;
+                 bufferArray[i][ii]=controlArray[7];
              }else if (array[i][ii] == 0 && neighbour ==8){
-                 bufferArray[i][ii]=0;
+                 bufferArray[i][ii]=controlArray[8];
              }
          }
      }
@@ -278,8 +279,118 @@ static = arrayZero()
  canvas.addEventListener('touchend',  (e) => handleTouch(e, onPointerUp))
  canvas.addEventListener('mousemove', onPointerMove)
  canvas.addEventListener('touchmove', (e) => handleTouch(e, onPointerMove))
- canvas.addEventListener( 'wheel', (e) => adjustZoom(e.deltaY*SCROLL_SENSITIVITY))
- 
+ //canvas.addEventListener( 'wheel', (e) => adjustZoom(e.deltaY*SCROLL_SENSITIVITY))
+
+
+
+
+
  let intervalId = window.setInterval(function(){
-    draw()
+
+    var b0 = document.getElementById("b0");
+    var b1 = document.getElementById("b1");
+    var b2 = document.getElementById("b2");
+    var b3 = document.getElementById("b3");
+    var b4 = document.getElementById("b4");
+    var b5 = document.getElementById("b5");
+    var b6 = document.getElementById("b6");
+    var b7 = document.getElementById("b7");
+    var b8 = document.getElementById("b8");
+
+
+    var s0 = document.getElementById("s0");
+    var s1 = document.getElementById("s1");
+    var s2 = document.getElementById("s2");
+    var s3 = document.getElementById("s3");
+    var s4 = document.getElementById("s4");
+    var s5 = document.getElementById("s5");
+    var s6 = document.getElementById("s6");
+    var s7 = document.getElementById("s7");
+    var s8 = document.getElementById("s8");
+
+    let controlArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+   
+
+
+    if (b0.checked == true){
+        controlArray[0]=1
+    }else{controlArray[0]=0}
+    
+    if (b1.checked == true){
+        controlArray[1]=1
+    }else{controlArray[1]=0}
+
+    if (b2.checked == true){
+       controlArray[2]=1
+    }else{controlArray[2]=0}
+
+    if (b3.checked == true){
+        controlArray[3]=1
+    }else{controlArray[3]=0}
+
+    if (b4.checked == true){
+        controlArray[4]=1
+    }else{controlArray[4]=0}
+
+    if (b5.checked == true){
+        controlArray[5]=1
+    }else{controlArray[5]=0}
+
+    if (b6.checked == true){
+        controlArray[6]=1
+    }else{controlArray[6]=0}
+
+    if (b7.checked == true){
+        controlArray[7]=1
+    }else{controlArray[7]=0}
+
+    if (b8.checked == true){
+        controlArray[8]=1
+    }else{controlArray[8]=0}
+
+
+
+    if (s0.checked == true){
+        controlArray[9]=1
+    }else{controlArray[9]=0}
+
+    if (s1.checked == true){
+        controlArray[10]=1
+    }else{controlArray[10]=0}
+
+    if (s2.checked == true){
+        controlArray[11]=1
+    }else{controlArray[11]=0}
+    if (s3.checked == true){
+        controlArray[12]=1
+    }else{controlArray[12]=0}
+
+    if (s4.checked == true){
+        controlArray[13]=1
+    }else{controlArray[13]=0}
+
+    if (s5.checked == true){
+        controlArray[14]=1
+    }else{controlArray[14]=0}
+
+    if (s6.checked == true){
+        controlArray[15]=1
+    }else{controlArray[15]=0}
+
+    if (s7.checked == true){
+        controlArray[16]=1
+    }else{controlArray[16]=0}
+
+    if (s8.checked == true){
+        controlArray[17]=1
+    }else{controlArray[17]=0}
+
+    console.log(controlArray)
+
+
+    let timeVar= 100;
+    
+
+
+    draw(controlArray)
     }, 100);
