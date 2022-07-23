@@ -7,11 +7,28 @@ let y = []
 let array = []
 let yy = []
 let bufferArray=[]
+var pause_state = 1;
 
 for (let i = 0; i<100; i++){
     y = Array.from({length:100}, () => Math.round(Math.random()))
     array.push(y)
 }
+
+let reset = document.getElementById("reset");
+
+reset.onclick = function reset(){
+    array = []
+    for (let i = 0; i<100; i++){
+        y = Array.from({length:100}, () => Math.round(Math.random()))
+        array.push(y)
+    }
+};
+
+
+
+
+
+
 
 console.log("Hello there!")
 
@@ -33,8 +50,7 @@ static = arrayZero()
  let MIN_ZOOM = 0.1
  let SCROLL_SENSITIVITY = 0.0005
  
- function draw(controlArray)
- {
+ function draw(controlArray){
      canvas.width = 1000
      canvas.height = 1000
      
@@ -70,11 +86,8 @@ static = arrayZero()
     ctx.moveTo(0,i)
     ctx.lineTo(1000,i)
     ctx.stroke()
-
     }
     
-         
-     
  
      bufferArray = arrayZero();
      
@@ -168,12 +181,7 @@ static = arrayZero()
          
  
      array = bufferArray
- 
- 
-     
-     
-     
- }
+    }
 
  
  // Gets the relevant location from a mouse or single touch event
@@ -285,112 +293,96 @@ static = arrayZero()
 
 
 
- let intervalId = window.setInterval(function(){
+setInterval(function(){
 
-    var b0 = document.getElementById("b0");
-    var b1 = document.getElementById("b1");
-    var b2 = document.getElementById("b2");
-    var b3 = document.getElementById("b3");
-    var b4 = document.getElementById("b4");
-    var b5 = document.getElementById("b5");
-    var b6 = document.getElementById("b6");
-    var b7 = document.getElementById("b7");
-    var b8 = document.getElementById("b8");
+var b0 = document.getElementById("b0");
+var b1 = document.getElementById("b1");
+var b2 = document.getElementById("b2");
+var b3 = document.getElementById("b3");
+var b4 = document.getElementById("b4");
+var b5 = document.getElementById("b5");
+var b6 = document.getElementById("b6");
+var b7 = document.getElementById("b7");
+var b8 = document.getElementById("b8");
 
+var s0 = document.getElementById("s0");
+var s1 = document.getElementById("s1");
+var s2 = document.getElementById("s2");
+var s3 = document.getElementById("s3");
+var s4 = document.getElementById("s4");
+var s5 = document.getElementById("s5");
+var s6 = document.getElementById("s6");
+var s7 = document.getElementById("s7");
+var s8 = document.getElementById("s8");
 
-    var s0 = document.getElementById("s0");
-    var s1 = document.getElementById("s1");
-    var s2 = document.getElementById("s2");
-    var s3 = document.getElementById("s3");
-    var s4 = document.getElementById("s4");
-    var s5 = document.getElementById("s5");
-    var s6 = document.getElementById("s6");
-    var s7 = document.getElementById("s7");
-    var s8 = document.getElementById("s8");
+let controlArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
-    let controlArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-   
+if (b0.checked == true){
+    controlArray[0]=1
+}else{controlArray[0]=0}
+if (b1.checked == true){
+    controlArray[1]=1
+}else{controlArray[1]=0}
+if (b2.checked == true){
+   controlArray[2]=1
+}else{controlArray[2]=0}
+if (b3.checked == true){
+    controlArray[3]=1
+}else{controlArray[3]=0}
+if (b4.checked == true){
+    controlArray[4]=1
+}else{controlArray[4]=0}
+if (b5.checked == true){
+    controlArray[5]=1
+}else{controlArray[5]=0}
+if (b6.checked == true){
+    controlArray[6]=1
+}else{controlArray[6]=0}
+if (b7.checked == true){
+    controlArray[7]=1
+}else{controlArray[7]=0}
+if (b8.checked == true){
+    controlArray[8]=1
+}else{controlArray[8]=0}
 
-
-    if (b0.checked == true){
-        controlArray[0]=1
-    }else{controlArray[0]=0}
-    
-    if (b1.checked == true){
-        controlArray[1]=1
-    }else{controlArray[1]=0}
-
-    if (b2.checked == true){
-       controlArray[2]=1
-    }else{controlArray[2]=0}
-
-    if (b3.checked == true){
-        controlArray[3]=1
-    }else{controlArray[3]=0}
-
-    if (b4.checked == true){
-        controlArray[4]=1
-    }else{controlArray[4]=0}
-
-    if (b5.checked == true){
-        controlArray[5]=1
-    }else{controlArray[5]=0}
-
-    if (b6.checked == true){
-        controlArray[6]=1
-    }else{controlArray[6]=0}
-
-    if (b7.checked == true){
-        controlArray[7]=1
-    }else{controlArray[7]=0}
-
-    if (b8.checked == true){
-        controlArray[8]=1
-    }else{controlArray[8]=0}
-
-
-
-    if (s0.checked == true){
-        controlArray[9]=1
-    }else{controlArray[9]=0}
-
-    if (s1.checked == true){
-        controlArray[10]=1
-    }else{controlArray[10]=0}
-
-    if (s2.checked == true){
-        controlArray[11]=1
-    }else{controlArray[11]=0}
-    if (s3.checked == true){
-        controlArray[12]=1
-    }else{controlArray[12]=0}
-
-    if (s4.checked == true){
-        controlArray[13]=1
-    }else{controlArray[13]=0}
-
-    if (s5.checked == true){
-        controlArray[14]=1
-    }else{controlArray[14]=0}
-
-    if (s6.checked == true){
-        controlArray[15]=1
-    }else{controlArray[15]=0}
-
-    if (s7.checked == true){
-        controlArray[16]=1
-    }else{controlArray[16]=0}
-
-    if (s8.checked == true){
-        controlArray[17]=1
-    }else{controlArray[17]=0}
-
-    console.log(controlArray)
+if (s0.checked == true){
+    controlArray[9]=1
+}else{controlArray[9]=0}
+if (s1.checked == true){
+    controlArray[10]=1
+}else{controlArray[10]=0}
+if (s2.checked == true){
+    controlArray[11]=1
+}else{controlArray[11]=0}
+if (s3.checked == true){
+    controlArray[12]=1
+}else{controlArray[12]=0}
+if (s4.checked == true){
+    controlArray[13]=1
+}else{controlArray[13]=0}
+if (s5.checked == true){
+    controlArray[14]=1
+}else{controlArray[14]=0}
+if (s6.checked == true){
+    controlArray[15]=1
+}else{controlArray[15]=0}
+if (s7.checked == true){
+    controlArray[16]=1
+}else{controlArray[16]=0}
+if (s8.checked == true){
+    controlArray[17]=1
+}else{controlArray[17]=0}
 
 
-    let timeVar= 100;
-    
+var pause = document.getElementById("pause");
+
+console.log(pause_state)
 
 
-    draw(controlArray)
-    }, 100);
+if (pause.checked == false){
+draw(controlArray)
+}
+
+
+}, 1);
+
