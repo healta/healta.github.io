@@ -27,9 +27,6 @@ reset.onclick = function reset(){
 
 
 
-
-
-
 console.log("Hello there!")
 
 const arrayZero =() =>{
@@ -69,7 +66,7 @@ static = arrayZero()
      
      for (let i = 0; i<100; i++){
          for (let ii=0;ii<100;ii++)    
-             if (array[i][ii] == 1){
+             if (array[ii][i] == 1){
               ctx.fillRect(i*10,ii*10,10,10)
              }
 
