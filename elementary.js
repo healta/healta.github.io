@@ -129,14 +129,8 @@ for (i = 0; i < 401; i++) {
         array[i][ii] = 0;
       }
     } catch (e) {}
-  }
-}
-
-for (let i = 0; i < 401; i++) {
-  for (let ii = 0; ii < 401; ii++)
     if (array[i][ii] == 1) {
       ctx.fillRect(ii * 3, i * 3, 3, 3);
     }
+  }
 }
-
-console.log(array);
