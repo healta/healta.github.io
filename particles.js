@@ -1,7 +1,7 @@
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
-ctx.canvas.width = window.innerWidth - 1111;
-ctx.canvas.height = window.innerHeight - 1111;
+ctx.canvas.width = window.innerWidth - 100;
+ctx.canvas.height = window.innerHeight - 100;
 let particleArray;
 let particleArrayGreen;
 let particleArrayRed;
@@ -13,7 +13,7 @@ particleArrayRed = [];
 particleArrayBlue = [];
 particleArrayGreen = [];
 
-let numberOfParticles = 11;
+let numberOfParticles = 55;
 for (let i = 0; i < numberOfParticles; i++) {
   let x = Math.random() * canvas.width;
   let y = Math.random() * canvas.height;
