@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Particles</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+</head>
+<body>
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="index.html">Index</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="Conway.html">Conway's Game of Life</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="Elementary Cellular Automation.html">ECA</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="particles.html">particles</a>
+    </li>
+  </ul>
+<div class="canvas-container">
+
+  <canvas id='newparticles'></canvas>
+</div>
+
+<div class="input-group input-group-sm mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" >color</span>
+  </div>
+  <input  type="text" id="input1" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
+</div>
+<div class="input-group input-group-sm mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" >Small</span>
+  </div>
+  <input type="number" min="1" step="1"id="input2" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
+</div>
+<div class="input-group input-group-sm mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" >maxspeed</span>
+  </div>
+  <input type="number" min="1" step="1" id="input3" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
+</div>
+<div class="input-group input-group-sm mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">minspeed</span>
+  </div>
+  <input type="number" min="1" step="1" id="input4" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
+</div>
+
+
+<button type="button" class="btn btn-primary" id = "button1">Red</button>
+<button type="button" class="btn btn-primary"id = "button2">Primary</button>
+<button type="button" class="btn btn-primary"id = "button3">Primary</button>
+<button type="button" class="btn btn-primary"id = "button4">Primary</button>
+<button type="button" class="btn btn-primary"id = "button5">Primary</button>
+  
+  <script src="newparticles.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</body>
+</html>
