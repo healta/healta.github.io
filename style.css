@@ -51,3 +51,15 @@
   background-position: center;
   background-size: cover;
 }
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 100px;
+}
+.grid-item {
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
