@@ -567,7 +567,7 @@ solve.onclick = function solve(){
   document.getElementById("80").value = array[8][7]
   document.getElementById("81").value = array[8][8]
 
-
+  console.log(array)
   let image = document.getElementById("image");
-  image.src = "https://qph.cf2.quoracdn.net/main-qimg-d1adf2498b4410b79a689b93f7577207-c"
+  image.src = "https://media.gettyimages.com/photos/venomous-snake-picture-id157479804"
 }
