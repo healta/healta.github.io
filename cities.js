@@ -112,29 +112,6 @@ function draw() {
     ctx3.fill();
   }
 
-  //last_pointed = 0;
-
-  //for (let i = 0; i < array.length; i++) {
-  //  ctx2.strokeStyle = "green";
-  //  ctx2.beginPath();
-  //  ctx2.moveTo(array2[last_pointed][0], array2[last_pointed][1]);
-  //  node_pointer = array2[i][2];
-  //  last_pointed = node_pointer;
-  //  ctx2.lineTo(array2[node_pointer][0], array2[node_pointer][1]);
-  //  ctx2.stroke();
-  //}
-
-  //last_pointed = 0;
-
-  //for (let i = 0; i < array.length; i++) {
-  //  ctx3.strokeStyle = "green";
-  //  ctx3.beginPath();
-  //  ctx3.moveTo(array3[last_pointed][0], array3[last_pointed][1]);
-  //  node_pointer = array3[i][2];
-  //  last_pointed = node_pointer;
-  //  ctx3.lineTo(array3[node_pointer][0], array3[node_pointer][1]);
-  //  ctx3.stroke();
-  //}
 
   last_pointed = 0;
 
@@ -204,3 +181,5 @@ swap.onclick = function random_swap() {
   draw();
   draw1();
 };
+
+
