@@ -19,7 +19,6 @@ section{padding:10px}#hero{height:100vh}#hero h1{color:#f3f3f3;padding:0px;margi
 
 #stack{background-color:#f3f3f3}#stack h1{color:#2A3A3F}
 #stack .skills{margin-top:20px}#stack .devicon{font-size:10rem}
-#stack .devicon-wordpress-plain-wordmark{color:#25a4d2}
 #stack .devicon-python-plain-wordmark{color:#4280b2}
 #stack .devicon-javascript-plain{color:#FDCD3B}@media only screen and (max-width: 40em)
 {#stack .devicon{font-size:5rem}}
