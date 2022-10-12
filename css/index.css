@@ -1,0 +1,10 @@
+body{background-color:#142734;
+    font-family:"Josefin-sans";
+    font-weight:700}
+h1{font-family:"Beaufort"}
+.huge{font-size:55px}li a,li i{color:#FDCD3B}
+li a:hover,li i:hover{color:white}
+textarea,input,button{outline:none !important}
+.button{font-family:"Josefin-sans";background-color:#2A3A3F;color:#FDCD3B;border-radius:15px;border:2px solid #2A3A3F;font-weight:700}
+.button:hover,.label{background-color:transparent;color:#2A3A3F;border:2px solid #FDCD3B;border-radius:15px}
+

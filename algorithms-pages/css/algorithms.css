@@ -1,3 +1,6 @@
+body{background-color:#142734;}
+
+
 #canvas1 {
   position: 0, 0;
   border: 1px solid black;
@@ -85,4 +88,3 @@
   width: 800px;
   height: 800px;
 }
-

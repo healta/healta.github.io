@@ -1,32 +1,294 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<!--[if IE 9]>
+<html class="lt-ie10" lang="en" >
+	<![endif]-->
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Dimitar Dimitrov" />
+    <meta property="og:title" content="Dimitrov | Portfolio" />
+    <meta property="og:description" content="I'm Dimitar, self taught developer, eager to learn new things" />
+    <meta property="og:url" content="https://healta.github.io/" />
 
-</head>
-<body>
-  <ul class="nav justify-content-center">
-    <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="Steganography.html">Steganography</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="Conway.html">Conway's Game of Life</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="Elementary Cellular Automation.html">ECA</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="particles.html">particles</a>
-    </li>
-  </ul>
+    <title>Dimitar Dimitrov</title>
 
-Landing page and interface coming up really soon!
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,700,700i" rel="stylesheet" />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-</body>
+  <body>
+    <section class="hero sep hover-border" id="hero">
+      <div class="row">
+        <div class="columns medium-6 medium-offset-3 main">
+          <h1 class="medium text-center">Dimitar Dimitrov</h1>
+          <h3 class="text-center subtext">Fullstack/backend developer, page under construction (tm)</h3>
+          <div class="menu-centered">
+            <ul class="menu">
+              <li>
+                <a href="#projects"><i class="fa fa-briefcase fa-lg"></i></a>
+              </li>
+              <li>
+                <a href="#stack"><i class="fa fa-code fa-lg"></i></a>
+              </li>
+              <li>
+                <a href="#about"><i class="fa fa-user fa-lg"></i></a>
+              </li>
+              <li>
+                <a href="#contact"><i class="fa fa-envelope-o fa-lg"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--section id="projects" class="sep hover-border">
+      <h1 class="huge text-center">PROJECTS</h1>
+
+      <section class="row small-up-1 medium-up-3">
+        <div class="column column-block">
+          <div class="text-center cards outer-card">
+            <img src="images/makeqrmenu.png" class="thumbnail" />
+            <h2>MakeQRMenu</h2>
+            <p class="desc">
+              Enable business owners to Create contactless restaurant menus using QR Codes for customers to scan and easily see the services
+              you offer and notify them of any deals you have.
+            </p>
+            <div class="row">
+              <a target="_blank" href="https://makeqrmenu.com?ref=portfolio">
+                <input type="button" class="button" value="Try it!" />
+              </a>
+            </div>
+            <span class="label"><i class="devicon-amazonwebservices-plain colored"></i> AWS</span>
+            <span class="label"><i class="devicon-nodejs-plain colored"></i> Nodejs</span>
+            <span class="label"><i class="devicon-vuejs-plain colored"></i> Vue</span>
+          </div>
+        </div>
+        <div class="column column-block">
+          <div class="text-center cards outer-card">
+            <img src="images/angularmb.png" class="thumbnail" />
+            <h2>AngularMB</h2>
+            <p class="desc">
+              Angular MessageBoard app thats similar to Reddit built using Php Laravel backend for the API, hosted on Heroku and JSON Web
+              Token based authentication.
+            </p>
+
+            <div class="row">
+              <a target="_blank" href="http://angularmb.bitballoon.com/">
+                <input type="button" class="button" value="Try it!" />
+              </a>
+              <a target="_blank" href="https://github.com/ananddpatel/angularmb/">
+                <button class="button"><i class="devicon-github-plain"></i>Src Frontend</button>
+              </a>
+              <a target="_blank" href="https://github.com/ananddpatel/angularmb-backend">
+                <button class="button"><i class="devicon-github-plain"></i>Src Backend</button>
+              </a>
+            </div>
+            <span class="label"><i class="devicon-php-plain colored"></i> php</span>
+            <span class="label"><i class="devicon-laravel-plain colored"></i> Laravel</span>
+            <span class="label"><i class="devicon-angularjs-plain colored"></i> Angular</span>
+          </div>
+        </div>
+        <div class="column column-block">
+          <div class="text-center cards">
+            <img src="images/nbagoats.jpg" class="thumbnail" />
+            <h2>NBA Goats</h2>
+            <p class="desc">
+              A laravel app for comparing and ranking NBA players to see who is the Greatest Of All Time from public perception based on the
+              ELO rating.<strong class="desc" style="font-size: small; margin-bottom: 0px">
+                (Intial load may take upto 10seconds while Heroku wakes up.)</strong
+              >
+            </p>
+
+            <div class="row">
+              <a target="_blank" href="http://nbagoats.herokuapp.com/">
+                <input type="button" class="button" value="Try it!" />
+              </a>
+              <a target="_blank" href="https://www.youtube.com/watch?v=6NVmDWIcr7U">
+                <button class="button"><i class="fa fa-youtube-play"></i> See a demo</button>
+              </a>
+              <a target="_blank" href="https://github.com/ananddpatel/nba-goats/">
+                <button class="button"><i class="devicon-github-plain"></i>Source</button>
+              </a>
+            </div>
+            <span class="label"><i class="devicon-php-plain colored"></i> php</span>
+            <span class="label"><i class="devicon-laravel-plain colored"></i> Laravel</span>
+            <span class="label"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
+          </div>
+        </div>
+        <div class="column column-block">
+          <div class="text-center cards">
+            <img src="images/starterapi.jpg" class="thumbnail" />
+            <h2>StarterAPI</h2>
+            <p class="desc">
+              A REST API for commonly used dummy blog data for testing, learning new frameworks, and/or demo purposes.<strong
+                class="desc"
+                style="font-size: small; margin-bottom: 0px"
+              >
+                (Intial load may take upto 10seconds while Heroku wakes up.)</strong
+              >
+            </p>
+
+            <div class="row">
+              <a target="_blank" href="http://starterapi.herokuapp.com/">
+                <input type="button" class="button" value="Try it!" />
+              </a>
+              <a target="_blank" href="https://github.com/ananddpatel/StarterAPI">
+                <button class="button"><i class="devicon-github-plain"></i>Source</button>
+              </a>
+            </div>
+            <span class="label"><i class="devicon-php-plain colored"></i> php</span>
+            <span class="label"><i class="devicon-laravel-plain colored"></i> Laravel</span>
+            <span class="label"><i class="devicon-vuejs-plain colored"></i> VueJS</span>
+          </div>
+        </div>
+        <div class="column column-block">
+          <div class="text-center cards">
+            <img src="images/buildmymeals.png" class="thumbnail" />
+            <h2>BuildMyMeals</h2>
+            <p class="desc">
+              An app that takes your body measurements, the amount of weight to gain/loss per week and the number of meals you want to eat
+              daily and generates healthy meals.
+            </p>
+            <div class="row">
+              <a target="_blank" href="https://ananddpatel.github.io/BuildMyMeals">
+                <input type="button" class="button" value="Try it!" />
+              </a>
+              <a target="_blank" href="https://github.com/ananddpatel/BuildMyMeals">
+                <button class="button"><i class="devicon-github-plain"></i> Source</button>
+              </a>
+            </div>
+            <span class="label"><i class="devicon-javascript-plain colored"></i> Javascript</span>
+            <span class="label"><i class="devicon-jquery-plain colored"></i> JQuery</span>
+            <span class="label"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
+          </div>
+        </div>
+        <div class="column column-block">
+          <div class="text-center cards">
+            <img src="images/treemapper.PNG" class="thumbnail" />
+            <h2>Treemapper</h2>
+            <p class="desc">
+              This app was a project for my python class. Treemapper generates an interactive treemap of a given directory or population
+              data from the World Bank API of all the countries.
+            </p>
+            <div class="row">
+              <a target="_blank" href="https://www.youtube.com/watch?v=cSmHkWbBR1k">
+                <button class="button"><i class="fa fa-youtube-play"></i> See a demo</button>
+              </a>
+              <a target="_blank" href="https://github.com/ananddpatel/treemapper">
+                <button class="button"><i class="devicon-github-plain"></i> Source</button>
+              </a>
+            </div>
+            <span class="label"><i class="devicon-python-plain colored"></i> Python</span>
+            <span class="label">Pygame</span>
+          </div>
+        </div>
+
+        <div class="column column-block medium-offset-4">
+          <div class="text-center cards">
+            <img src="images/pomodoro.png" class="thumbnail" />
+            <h2>Chrome Pomodoro</h2>
+            <p class="desc">
+              Google Chrome extension version of the popular Pomodoro technique for focused work period of 25 minutes followed by a short 5
+              minute break.
+            </p>
+            <div class="row">
+              <a target="_blank" href="https://developer.chrome.com/extensions/getstarted#unpacked">
+                <input type="button" class="button" value="Try it!" />
+              </a>
+              <a target="_blank" href="https://github.com/ananddpatel/chrome-pomodoro">
+                <button class="button"><i class="devicon-github-plain"></i> Source</button>
+              </a>
+            </div>
+            <span class="label"><i class="devicon-javascript-plain colored"></i> Javascript</span>
+            <span class="label"><i class="devicon-chrome-plain colored"></i> Chrome Extension</span>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section id="stack" class="sep hover-border">
+      <h1 class="huge text-center">Skills</h1>
+      <div class="row text-center skills">
+        <i class="devicon devicon-html5-plain-wordmark colored"></i>
+        <i class="devicon devicon-css3-plain-wordmark colored"></i>
+        <i class="devicon devicon-sass-original colored"></i>
+        <i class="devicon devicon-javascript-plain colored"></i>
+        <i class="devicon devicon-nodejs-plain-wordmark colored"></i>
+        <i class="devicon devicon-typescript-plain colored"></i>
+        <i class="devicon devicon-express-original-wordmark colored"></i>
+        <i class="devicon devicon-jquery-plain-wordmark colored"></i>
+        <i class="devicon devicon-angularjs-plain colored"></i>
+        <i class="devicon devicon-react-original-wordmark colored"></i>
+        <i class="devicon devicon-vuejs-plain-wordmark colored"></i>
+        <i class="devicon devicon-php-plain colored"></i>
+        <i class="devicon devicon-wordpress-plain-wordmark"></i>
+        <i class="devicon devicon-laravel-plain-wordmark colored"></i>
+        <i class="devicon devicon-python-plain-wordmark colored"></i>
+        <i class="devicon devicon-java-plain-wordmark colored"></i>
+        <i class="devicon devicon-mysql-plain-wordmark colored"></i>
+        <i class="devicon devicon-mongodb-plain-wordmark colored"></i>
+        <i class="devicon devicon-redis-plain-wordmark colored"></i>
+        <i class="devicon devicon-git-plain-wordmark colored"></i>
+        <i class="devicon devicon-github-plain-wordmark colored"></i>
+        <i class="devicon devicon-amazonwebservices-plain-wordmark colored"></i>
+        <i class="devicon devicon-linux-plain colored"></i>
+        <i class="devicon devicon-heroku-plain-wordmark colored"></i>
+        <i class="devicon devicon-chrome-plain-wordmark colored"></i>
+        <i class="devicon devicon-bootstrap-plain-wordmark colored"></i>
+        <i class="devicon devicon-foundation-plain-wordmark colored"></i>
+      </div>
+    </section>
+
+    <section id="about" class="sep hover-border">
+      <h1 class="huge text-center">About</h1>
+      <div class="row">
+        <div class="columns medium-3 small-12 text-center">
+          <!-- <img src="images/lucas.png" width="150"> -->
+          <img id="portrait" src="images/portrait.jpg" />
+          <!-- <img src="http://zurb.com/ink/images/inky-computer.svg" alt="Inky"> -->
+        </div>
+        <div class="columns medium-9 small-12">
+          <p class="desc">
+            Hi! My name's Dimitar Dimitrov
+          </p>
+          <p class="desc">
+            I 
+          </p>
+          <p class="desc">.</p>
+          <!-- <p class="desc">I'm currently looking for a job doing backend web development in Toronto, Canada.</p> -->
+        </div>
+      </div>
+    </section>
+
+    <!--section id="contact" class="sep hover-border">
+      <h1 class="huge text-center">Contact</h1>
+      <div class="row">
+        <div class="columns medium-6">
+          <ul class="text-center">
+            <li><i class="fa fa-github-square"></i><a href="https://github.com/ananddpatel" target="_blank"> Github</a></li>
+            <li><i class="fa fa-linkedin-square"></i><a href="https://www.linkedin.com/in/ananddpatel/" target="_blank"> Linkedin</a></li>
+            <li><i class="fa fa-file-text"></i><a href="resume.pdf" target="_blank"> Resume</a></li>
+            <li><i class="fa fa-envelope"></i><a href="mailto:anandpatel3@hotmail.com" target="_blank"> anandpatel3@hotmail.com</a></li>
+          </ul>
+        </div>
+        <div class="columns medium-6 offset">
+          <form action="https://formspree.io/anandpatel3@hotmail.com" class="form" method="POST">
+            <input type="email" name="email" placeholder="Email" />
+            <textarea name="message" placeholder="Message" rows="10"></textarea>
+            <div class="text-center"><input type="submit" class="button" value="Send" /></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </body>
 </html>
