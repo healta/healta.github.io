@@ -112,7 +112,6 @@ function draw() {
     ctx3.fill();
   }
 
-
   last_pointed = 0;
 
   for (let i = 0; i < array.length; i++) {
@@ -181,5 +180,3 @@ swap.onclick = function random_swap() {
   draw();
   draw1();
 };
-
-

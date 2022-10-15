@@ -1,5 +1,6 @@
-body{background-color:#142734;}
-
+body {
+  background-color: #142734;
+}
 
 #canvas1 {
   position: 0, 0;
@@ -44,8 +45,7 @@ body{background-color:#142734;}
   height: 980;
 }
 
-
-#display-image{
+#display-image {
   position: 0, 0;
   border: 1px solid black;
   width: 400px;
@@ -54,7 +54,6 @@ body{background-color:#142734;}
   background-position: center;
   background-size: cover;
 }
-
 
 .grid-container {
   display: grid;
@@ -68,7 +67,7 @@ body{background-color:#142734;}
 
 .grid-container1 {
   display: grid;
-  grid-template-columns: auto auto auto auto auto auto auto auto auto ;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto;
   padding: 100px;
 }
 .grid-item1 {

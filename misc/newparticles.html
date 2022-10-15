@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Particles</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Particles</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
 </head>
+
 <body>
   <ul class="nav justify-content-center">
     <li class="nav-item">
@@ -21,16 +24,16 @@
       <a class="nav-link" href="Elementary Cellular Automation.html">ECA</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="particles.html">particles</a>
+      <a class="nav-link" href="particles.html">particles</a>
     </li>
   </ul>
-<div class="canvas-container">
+  <div class="canvas-container">
 
-  <canvas id='newparticles'></canvas>
-</div>
+    <canvas id='newparticles'></canvas>
+  </div>
 
-<div class="input-group input-group-sm mb-3">
-  <span class="input-group-text" >Color</span>
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text">Color</span>
     <select class="form-control" id="color1">
       <option>Red</option>
       <option>Black</option>
@@ -48,16 +51,19 @@
       <option>Indigo</option>
       <option>Pink</option>
     </select>
-  <span class="input-group-text" >Number of dots of dots</span>
-  <input type="number" min="1" step="1"id="input11" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-    <span class="input-group-text" >Maximum speed</span>
-  <input type="number" min="1" step="1" id="input12" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
+    <span class="input-group-text">Number of dots of dots</span>
+    <input type="number" min="1" step="1" id="input11" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
+    <span class="input-group-text">Maximum speed</span>
+    <input type="number" min="1" step="1" id="input12" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
     <span class="input-group-text">Interraction distance</span>
-  <input type="number" min="1" step="1" id="input13" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-</div>
+    <input type="number" min="1" step="1" id="input13" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
+  </div>
 
-<div class="input-group input-group-sm mb-3">
-<span class="input-group-text" >Color</span>
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text">Color</span>
     <select class="form-control" id="color2">
       <option>Black</option>
       <option>Red</option>
@@ -74,16 +80,19 @@
       <option>Teal</option>
       <option>Indigo</option>
       <option>Pink</option>
-    </select>      <span class="input-group-text" >Number of dots of dots</span>
-  <input type="number" min="1" step="1"id="input21" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-    <span class="input-group-text" >Maximum speed</span>
-  <input type="number" min="1" step="1" id="input22" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
+    </select> <span class="input-group-text">Number of dots of dots</span>
+    <input type="number" min="1" step="1" id="input21" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
+    <span class="input-group-text">Maximum speed</span>
+    <input type="number" min="1" step="1" id="input22" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
     <span class="input-group-text">Interraction distance</span>
-  <input type="number" min="1" step="1" id="input23" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-</div>
+    <input type="number" min="1" step="1" id="input23" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
+  </div>
 
-<div class="input-group input-group-sm mb-3">
-<span class="input-group-text" >Color</span>
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text">Color</span>
     <select class="form-control" id="color3">
       <option>Indigo</option>
       <option>Black</option>
@@ -100,16 +109,19 @@
       <option>Teal</option>
       <option>Silver</option>
       <option>Pink</option>
-    </select>      <span class="input-group-text" >Number of dots of dots</span>
-  <input type="number" min="1" step="1"id="input31" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"  ></input>
-    <span class="input-group-text" >Maximum speed</span>
-  <input type="number" min="1" step="1" id="input32" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
+    </select> <span class="input-group-text">Number of dots of dots</span>
+    <input type="number" min="1" step="1" id="input31" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
+    <span class="input-group-text">Maximum speed</span>
+    <input type="number" min="1" step="1" id="input32" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
     <span class="input-group-text">Interraction distance</span>
-  <input type="number" min="1" step="1" id="input33" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-</div>
+    <input type="number" min="1" step="1" id="input33" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
+  </div>
 
-<div class="input-group input-group-sm mb-3">
-<span class="input-group-text" >Color</span>
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text">Color</span>
     <select class="form-control" id="color4">
       <option>Pink</option>
       <option>Black</option>
@@ -126,16 +138,19 @@
       <option>Teal</option>
       <option>Indigo</option>
       <option>Yellow</option>
-    </select>      <span class="input-group-text" >Number of dots of dots</span>
-  <input type="number" min="1" step="1"id="input41" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-    <span class="input-group-text" >Maximum speed</span>
-  <input type="number" min="1" step="1" id="input42" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
+    </select> <span class="input-group-text">Number of dots of dots</span>
+    <input type="number" min="1" step="1" id="input41" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
+    <span class="input-group-text">Maximum speed</span>
+    <input type="number" min="1" step="1" id="input42" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
     <span class="input-group-text">Interraction distance</span>
-  <input type="number" min="1" step="1" id="input43" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-</div>
+    <input type="number" min="1" step="1" id="input43" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
+  </div>
 
-<div class="input-group input-group-sm mb-3">
-<span class="input-group-text" >Color</span>
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text">Color</span>
     <select class="form-control" id="color5">
       <option>Orange</option>
       <option>Black</option>
@@ -152,16 +167,19 @@
       <option>Teal</option>
       <option>Indigo</option>
       <option>Pink</option>
-    </select>      <span class="input-group-text" >Number of dots of dots</span>
-  <input type="number" min="1" step="1"id="input51" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-    <span class="input-group-text" >Maximum speed</span>
-  <input type="number" min="1" step="1" id="input52" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
+    </select> <span class="input-group-text">Number of dots of dots</span>
+    <input type="number" min="1" step="1" id="input51" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
+    <span class="input-group-text">Maximum speed</span>
+    <input type="number" min="1" step="1" id="input52" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
     <span class="input-group-text">Interraction distance</span>
-  <input type="number" min="1" step="1" id="input53" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-</div>
+    <input type="number" min="1" step="1" id="input53" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
+  </div>
 
-<div class="input-group input-group-sm mb-3">
-<span class="input-group-text" >Color</span>
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text">Color</span>
     <select class="form-control" id="color6">
       <option>Maroon</option>
       <option>Black</option>
@@ -178,16 +196,19 @@
       <option>Teal</option>
       <option>Indigo</option>
       <option>Pink</option>
-    </select>      <span class="input-group-text" >Number of dots of dots</span>
-  <input type="number" min="1" step="1"id="input61" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-    <span class="input-group-text" >Maximum speed</span>
-  <input type="number" min="1" step="1" id="input62" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
+    </select> <span class="input-group-text">Number of dots of dots</span>
+    <input type="number" min="1" step="1" id="input61" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
+    <span class="input-group-text">Maximum speed</span>
+    <input type="number" min="1" step="1" id="input62" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
     <span class="input-group-text">Interraction distance</span>
-  <input type="number" min="1" step="1" id="input63" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-</div>
+    <input type="number" min="1" step="1" id="input63" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
+  </div>
 
-<div class="input-group input-group-sm mb-3">
-<span class="input-group-text" >Color</span>
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text">Color</span>
     <select class="form-control" id="color7">
       <option>Blue</option>
       <option>Black</option>
@@ -204,16 +225,19 @@
       <option>Teal</option>
       <option>Indigo</option>
       <option>Pink</option>
-    </select>      <span class="input-group-text" >Number of dots of dots</span>
-  <input type="number" min="1" step="1"id="input71" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-    <span class="input-group-text" >Maximum speed</span>
-  <input type="number" min="1" step="1" id="input72" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
+    </select> <span class="input-group-text">Number of dots of dots</span>
+    <input type="number" min="1" step="1" id="input71" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
+    <span class="input-group-text">Maximum speed</span>
+    <input type="number" min="1" step="1" id="input72" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
     <span class="input-group-text">Interraction distance</span>
-  <input type="number" min="1" step="1" id="input73" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-</div>
+    <input type="number" min="1" step="1" id="input73" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
+  </div>
 
-<div class="input-group input-group-sm mb-3">
-<span class="input-group-text" >Color</span>
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text">Color</span>
     <select class="form-control" id="color8">
       <option>Navy</option>
       <option>Black</option>
@@ -230,16 +254,19 @@
       <option>Teal</option>
       <option>Indigo</option>
       <option>Pink</option>
-    </select>      <span class="input-group-text" >Number of dots of dots</span>
-  <input type="number" min="1" step="1"id="input81" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-    <span class="input-group-text" >Maximum speed</span>
-  <input type="number" min="1" step="1" id="input82" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
+    </select> <span class="input-group-text">Number of dots of dots</span>
+    <input type="number" min="1" step="1" id="input81" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
+    <span class="input-group-text">Maximum speed</span>
+    <input type="number" min="1" step="1" id="input82" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
     <span class="input-group-text">Interraction distance</span>
-  <input type="number" min="1" step="1" id="input83" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-</div>
+    <input type="number" min="1" step="1" id="input83" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
+  </div>
 
-<div class="input-group input-group-sm mb-3">
-<span class="input-group-text" >Color</span>
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text">Color</span>
     <select class="form-control" id="color9">
       <option>Aqua</option>
       <option>Black</option>
@@ -256,16 +283,19 @@
       <option>Teal</option>
       <option>Indigo</option>
       <option>Pink</option>
-    </select>      <span class="input-group-text" >Number of dots of dots</span>
-  <input type="number" min="1" step="1"id="input91" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-    <span class="input-group-text" >Maximum speed</span>
-  <input type="number" min="1" step="1" id="input92" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
+    </select> <span class="input-group-text">Number of dots of dots</span>
+    <input type="number" min="1" step="1" id="input91" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
+    <span class="input-group-text">Maximum speed</span>
+    <input type="number" min="1" step="1" id="input92" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
     <span class="input-group-text">Interraction distance</span>
-  <input type="number" min="1" step="1" id="input93" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-</div>
+    <input type="number" min="1" step="1" id="input93" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
+  </div>
 
-<div class="input-group input-group-sm mb-3">
-<span class="input-group-text" >Color</span>
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text">Color</span>
     <select class="form-control" id="color10">
       <option>Purple</option>
       <option>Black</option>
@@ -282,16 +312,19 @@
       <option>Teal</option>
       <option>Indigo</option>
       <option>Pink</option>
-    </select>      <span class="input-group-text" >Number of dots of dots</span>
-  <input type="number" min="1" step="1"id="input101" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-    <span class="input-group-text" >Maximum speed</span>
-  <input type="number" min="1" step="1" id="input102" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
+    </select> <span class="input-group-text">Number of dots of dots</span>
+    <input type="number" min="1" step="1" id="input101" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
+    <span class="input-group-text">Maximum speed</span>
+    <input type="number" min="1" step="1" id="input102" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
     <span class="input-group-text">Interraction distance</span>
-  <input type="number" min="1" step="1" id="input103" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-</div>
+    <input type="number" min="1" step="1" id="input103" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
+  </div>
 
-<div class="input-group input-group-sm mb-3">
-<span class="input-group-text" >Color</span>
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text">Color</span>
     <select class="form-control" id="color11">
       <option>Lime</option>
       <option>Black</option>
@@ -308,16 +341,19 @@
       <option>Teal</option>
       <option>Indigo</option>
       <option>Pink</option>
-    </select>      <span class="input-group-text" >Number of dots of dots</span>
-  <input type="number" min="1" step="1"id="input111" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-    <span class="input-group-text" >Maximum speed</span>
-  <input type="number" min="1" step="1" id="input112" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
+    </select> <span class="input-group-text">Number of dots of dots</span>
+    <input type="number" min="1" step="1" id="input111" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
+    <span class="input-group-text">Maximum speed</span>
+    <input type="number" min="1" step="1" id="input112" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
     <span class="input-group-text">Interraction distance</span>
-  <input type="number" min="1" step="1" id="input113" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-</div>
+    <input type="number" min="1" step="1" id="input113" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
+  </div>
 
-<div class="input-group input-group-sm mb-3">
-<span class="input-group-text" >Color</span>
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text">Color</span>
     <select class="form-control" id="color12">
       <option>Darkgreen</option>
       <option>Black</option>
@@ -334,24 +370,30 @@
       <option>Teal</option>
       <option>Indigo</option>
       <option>Pink</option>
-    </select>      <span class="input-group-text" >Number of dots of dots</span>
-  <input type="number" min="1" step="1"id="input121" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-    <span class="input-group-text" >Maximum speed</span>
-  <input type="number" min="1" step="1" id="input122" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
+    </select> <span class="input-group-text">Number of dots of dots</span>
+    <input type="number" min="1" step="1" id="input121" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
+    <span class="input-group-text">Maximum speed</span>
+    <input type="number" min="1" step="1" id="input122" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
     <span class="input-group-text">Interraction distance</span>
-  <input type="number" min="1" step="1" id="input123" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></input>
-</div>
+    <input type="number" min="1" step="1" id="input123" class="form-control" aria-label="Small"
+      aria-describedby="inputGroup-sizing-sm"></input>
+  </div>
 
 
 
 
-<button type="button" class="btn btn-primary" id = "button1">Red</button>
-<button type="button" class="btn btn-primary"id = "button2">Primary</button>
-<button type="button" class="btn btn-primary"id = "button3">Primary</button>
-<button type="button" class="btn btn-primary"id = "button4">Primary</button>
-<button type="button" class="btn btn-primary"id = "button5">Primary</button>
-  
+  <button type="button" class="btn btn-primary" id="button1">Red</button>
+  <button type="button" class="btn btn-primary" id="button2">Primary</button>
+  <button type="button" class="btn btn-primary" id="button3">Primary</button>
+  <button type="button" class="btn btn-primary" id="button4">Primary</button>
+  <button type="button" class="btn btn-primary" id="button5">Primary</button>
+
   <script src="newparticles.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>

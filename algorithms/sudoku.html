@@ -1,108 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sudoku</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
 </head>
+
 <body>
 
-<div class="grid-container1" >
-    <input id="1" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="2" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="3" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="4" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="5" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="6" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="7" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="8" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="9" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="10" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="11" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="12" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="13" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="14" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="15" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="16" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="17" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="18" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="19" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="20" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="21" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="22" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="23" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="24" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="25" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="26" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="27" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="28" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="29" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="30" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="31" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="32" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="33" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="34" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="35" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="36" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="37" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="38" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="39" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="40" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="41" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="42" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="43" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="44" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="45" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="46" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="47" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="48" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="49" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="50" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="51" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="52" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="53" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="54" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="55" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="56" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="57" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="58" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="59" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="60" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="61" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="62" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="63" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="64" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="65" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="66" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="67" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="68" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="69" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="70" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="71" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="72" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="73" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="74" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="75" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="76" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="77" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="78" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="79" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="80" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
-    <input id="81" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number" min="0" max = "9" step="1" value = 0>
+    <div class="grid-container1">
+        <input id="1" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="2" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="3" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="4" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="5" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="6" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="7" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="8" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="9" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="10" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="11" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="12" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="13" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="14" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="15" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="16" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="17" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="18" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="19" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="20" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="21" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="22" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="23" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="24" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="25" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="26" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="27" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="28" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="29" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="30" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="31" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="32" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="33" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="34" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="35" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="36" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="37" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="38" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="39" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="40" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="41" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="42" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="43" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="44" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="45" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="46" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="47" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="48" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="49" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="50" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="51" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="52" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="53" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="54" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="55" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="56" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="57" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="58" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="59" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="60" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="61" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="62" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="63" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="64" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="65" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="66" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="67" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="68" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="69" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="70" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="71" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="72" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="73" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="74" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="75" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="76" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="77" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="78" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="79" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="80" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
+        <input id="81" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
+            min="0" max="9" step="1" value=0>
 
-</div>
+    </div>
 
-<button id = "calculate_sudoku" type="button" class="btn btn-primary">Load</button>
-<button id = "solve" type="button" class="btn btn-primary">Solve</button>
+    <button id="calculate_sudoku" type="button" class="btn btn-primary">Load</button>
+    <button id="solve" type="button" class="btn btn-primary">Solve</button>
 
-<img id="image" src="" />
+    <img id="image" src="" />
 
-  
-<script src="sudoku.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+    <script src="sudoku.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
