@@ -68,7 +68,7 @@ body {
 .grid-container1 {
   display: grid;
   grid-template-columns: auto auto auto auto auto auto auto auto auto;
-  padding: 100px;
+  padding: 1px;
 }
 
 .grid-item1 {

@@ -1,25 +1,26 @@
 const canvas = document.getElementById("cities");
 const ctx = canvas.getContext("2d");
-ctx.canvas.width = innerWidth / 2;
+ctx.canvas.width = innerWidth / 2.1;
 ctx.canvas.height = innerHeight / 2.2;
 
 const canvas1 = document.getElementById("cities1");
 const ctx1 = canvas1.getContext("2d");
-ctx1.canvas.width = innerWidth / 2;
+ctx1.canvas.width = innerWidth / 2.1;
 ctx1.canvas.height = innerHeight / 2.2;
 
 const canvas2 = document.getElementById("cities2");
 const ctx2 = canvas2.getContext("2d");
-ctx2.canvas.width = innerWidth / 2;
+ctx2.canvas.width = innerWidth / 2.1;
 ctx2.canvas.height = innerHeight / 2.2;
 
 const canvas3 = document.getElementById("cities3");
 const ctx3 = canvas3.getContext("2d");
-ctx3.canvas.width = innerWidth / 2;
+ctx3.canvas.width = innerWidth / 2.1;
 ctx3.canvas.height = innerHeight / 2.2;
 
 var start = document.getElementById("calculate_cities");
-startvalue = false;
+
+var startvalue = false;
 var array = [];
 var pointer = 1;
 var array1 = [];
