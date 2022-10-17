@@ -1,0 +1,90 @@
+body {
+  background-color: #142734;
+}
+
+#canvas1 {
+  position: 0, 0;
+  border: 1px solid black;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  width: 800px;
+  height: 800px;
+}
+
+.canvas-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#canvas2 {
+  position: 0, 0;
+  border: 1px solid black;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  width: 800px;
+  height: 800px;
+}
+
+#newparticles {
+  position: 0, 0;
+  border: 1px solid black;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 1820;
+  height: 980;
+}
+
+#display-image {
+  position: 0, 0;
+  border: 1px solid black;
+  width: 400px;
+  height: 225px;
+  border: 1px solid black;
+  background-position: center;
+  background-size: cover;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 10px;
+}
+.grid-item {
+  border: 1px solid rgb(0, 0, 0);
+  text-align: center;
+}
+
+.grid-container1 {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto;
+  padding: 1px;
+}
+
+.grid-item1 {
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+#sorting {
+  position: 0, 0;
+  border: 1px solid black;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  width: 800px;
+  height: 800px;
+}
