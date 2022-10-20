@@ -1,11 +1,15 @@
 const canvas = document.getElementById("sorting");
 const ctx = canvas.getContext("2d");
-ctx.canvas.width = window.innerWidth - 100;
-ctx.canvas.height = window.innerHeight - 100;
+ctx.canvas.width = window.innerWidth;
+ctx.canvas.height = window.innerHeight - 50;
 
-var array = [55, 66, 44, 11, 22, 33, 77];
+var array = [];
 
-var height = canvas.height;
+var height = window.innerHeight - 50;
+
+while (array.length < window.innerWidth / 10) {
+  array.push(Math.floor(Math.random() * height));
+}
 
 console.log(height, array.length);
 
@@ -17,11 +21,11 @@ function draw() {
   ctx.rect(0, 0, window.innerWidth, window.innerHeight);
   ctx.fill();
   for (i = 0; i < array.length; i++) {
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "green";
     ctx.beginPath();
-    ctx.fillRect(position_offset, height - array[i], 10, array[i]);
+    ctx.fillRect(position_offset, height - array[i], 5, array[i]);
     ctx.stroke();
-    position_offset = position_offset + 30;
+    position_offset = position_offset + 10;
   }
 }
 
@@ -51,7 +55,6 @@ function shuffleArray(array) {
 }
 
 function insertionSort(array) {
-  console.log(array);
   for (let i = 1; i < array.length; i++) {
     let ii = i - 1;
     let temp = array[i];
@@ -68,7 +71,6 @@ var holder;
 
 function selectionSort(array) {
   var temp = 0;
-  console.log(array);
   for (let i = 0; i < array.length - 1; i++) {
     lowest = array[i];
     for (let ii = i + 1; ii < array.length; ii++) {
