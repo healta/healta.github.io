@@ -82,13 +82,15 @@ function selectionSort(array) {
     holder = array[i];
     array[i] = lowest;
     array[temp] = holder;
+    setTimeout(function () {
+      draw();
+    }, 2.0 * 1000);
   }
 }
 
 sorting.onclick = function animate() {
-  while (issorted(array) == false) {
+  if (issorted(array) == false) {
     selectionSort(array);
   }
-  draw();
   console.log(array);
 };

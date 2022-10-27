@@ -1,3 +1,8 @@
+const canvas = document.getElementById("maze");
+const ctx = canvas.getContext("2d");
+ctx.canvas.width = innerWidth;
+ctx.canvas.height = innerHeight;
+
 var array = [
   [0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0],
@@ -127,6 +132,10 @@ function isavailable(position) {
   }
 
   return false;
+}
+
+function draw() {
+  pass;
 }
 
 button = document.getElementById("sortingbutton");
