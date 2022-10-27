@@ -105,4 +105,5 @@ sorting.onclick = function animate() {
     }
   }
   console.log(array);
+  draw();
 };
