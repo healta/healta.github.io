@@ -88,9 +88,21 @@ function selectionSort(array) {
   }
 }
 
+function mergeSort(array) {
+  console.log("soon");
+}
+
 sorting.onclick = function animate() {
   if (issorted(array) == false) {
-    selectionSort(array);
+    if (document.getElementById("bogosort").checked == true) {
+      shuffleArray(array);
+    } else if (document.getElementById("insertionsort").checked == true) {
+      insertionSort(array);
+    } else if (document.getElementById("selectionsort").checked == true) {
+      selectionSort(array);
+    } else if (document.getElementById("mergesort").checked == true) {
+      mergeSort(array);
+    }
   }
   console.log(array);
 };
