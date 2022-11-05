@@ -1,8 +1,6 @@
-var array = [];
+let array = [];
 
-var button = document.getElementById("calculate_sudoku");
-
-button.onclick = function load_array() {
+function load_array() {
   if (array.length < 1) {
     array1 = [
       document.getElementById("1").value,
@@ -118,7 +116,7 @@ button.onclick = function load_array() {
     console.log(array);
     console.log(checkcollums, isfull, checkrows);
   }
-};
+}
 
 function isfull(array) {
   for (let i = 0; i < 9; i++) {
@@ -502,6 +500,7 @@ function changevalue(array, listempty) {
 var solve = document.getElementById("solve");
 
 solve.onclick = function solve() {
+  load_array();
   searchempty(array);
   changevalue((array = array), (listempty = listempty));
   document.getElementById("1").value = array[0][0];
