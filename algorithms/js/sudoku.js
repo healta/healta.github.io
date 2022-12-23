@@ -131,15 +131,15 @@ function isfull(array) {
 
 function checkrows(array) {
   for (let i = 0; i < 9; i++) {
-    var count1 = 0;
-    var count2 = 0;
-    var count3 = 0;
-    var count4 = 0;
-    var count5 = 0;
-    var count6 = 0;
-    var count7 = 0;
-    var count8 = 0;
-    var count9 = 0;
+    let count1 = 0;
+    let count2 = 0;
+    let count3 = 0;
+    let count4 = 0;
+    let count5 = 0;
+    let count6 = 0;
+    let count7 = 0;
+    let count8 = 0;
+    let count9 = 0;
     for (let ii = 0; ii < 9; ii++) {
       if (array[i][ii] == 1) {
         count1++;
@@ -188,15 +188,15 @@ function checkrows(array) {
 
 function checkcollums(array) {
   for (let i = 0; i < array.length; i++) {
-    var count1 = 0;
-    var count2 = 0;
-    var count3 = 0;
-    var count4 = 0;
-    var count5 = 0;
-    var count6 = 0;
-    var count7 = 0;
-    var count8 = 0;
-    var count9 = 0;
+    let count1 = 0;
+    let count2 = 0;
+    let count3 = 0;
+    let count4 = 0;
+    let count5 = 0;
+    let count6 = 0;
+    let count7 = 0;
+    let count8 = 0;
+    let count9 = 0;
     for (let ii = 0; ii < array.length; ii++) {
       if (array[ii][i] == 1) {
         count1++;
@@ -243,19 +243,19 @@ function checkcollums(array) {
   return true;
 }
 
-var checks = [0, 3, 6];
+let checks = [0, 3, 6];
 
 function checkgrid1(array) {
   for (let iii = 0; iii < 3; iii++) {
-    var count1 = 0;
-    var count2 = 0;
-    var count3 = 0;
-    var count4 = 0;
-    var count5 = 0;
-    var count6 = 0;
-    var count7 = 0;
-    var count8 = 0;
-    var count9 = 0;
+    let count1 = 0;
+    let count2 = 0;
+    let count3 = 0;
+    let count4 = 0;
+    let count5 = 0;
+    let count6 = 0;
+    let count7 = 0;
+    let count8 = 0;
+    let count9 = 0;
     for (let ii = 0; ii < 3; ii++) {
       for (let i = 0; i < 3; i++) {
         if (array[ii + checks[iii]][i] == 1) {
@@ -306,15 +306,15 @@ function checkgrid1(array) {
 
 function checkgrid2(array) {
   for (let iii = 0; iii < 3; iii++) {
-    var count1 = 0;
-    var count2 = 0;
-    var count3 = 0;
-    var count4 = 0;
-    var count5 = 0;
-    var count6 = 0;
-    var count7 = 0;
-    var count8 = 0;
-    var count9 = 0;
+    let count1 = 0;
+    let count2 = 0;
+    let count3 = 0;
+    let count4 = 0;
+    let count5 = 0;
+    let count6 = 0;
+    let count7 = 0;
+    let count8 = 0;
+    let count9 = 0;
     for (let ii = 0; ii < 3; ii++) {
       for (let i = 3; i < 6; i++) {
         if (array[ii + checks[iii]][i] == 1) {
@@ -365,15 +365,15 @@ function checkgrid2(array) {
 
 function checkgrid3(array) {
   for (let iii = 0; iii < 3; iii++) {
-    var count1 = 0;
-    var count2 = 0;
-    var count3 = 0;
-    var count4 = 0;
-    var count5 = 0;
-    var count6 = 0;
-    var count7 = 0;
-    var count8 = 0;
-    var count9 = 0;
+    let count1 = 0;
+    let count2 = 0;
+    let count3 = 0;
+    let count4 = 0;
+    let count5 = 0;
+    let count6 = 0;
+    let count7 = 0;
+    let count8 = 0;
+    let count9 = 0;
     for (let ii = 0; ii < 3; ii++) {
       for (let i = 6; i < 7; i++) {
         if (array[ii + checks[iii]][i] == 1) {
@@ -434,7 +434,7 @@ function checkgrid(array) {
   }
 }
 
-var listempty = [];
+let listempty = [];
 
 function searchempty(array) {
   for (let i = 0; i < array.length; i++) {
@@ -460,7 +460,7 @@ function isitsolved(array) {
 }
 
 function changevalue(array, listempty) {
-  var counter = 0;
+  let counter = 0;
   while (
     isfull(array) == false ||
     checkcollums(array) == false ||
@@ -471,8 +471,8 @@ function changevalue(array, listempty) {
       if (counter < 0) {
         counter = 0;
       }
-      var a = listempty[counter][0];
-      var b = listempty[counter][1];
+      let a = listempty[counter][0];
+      let b = listempty[counter][1];
       array[a][b]++;
       if (
         checkcollums(array) == false ||
@@ -497,7 +497,7 @@ function changevalue(array, listempty) {
   return array;
 }
 
-var solve = document.getElementById("solve");
+let solve = document.getElementById("solve");
 
 solve.onclick = function solve() {
   load_array();

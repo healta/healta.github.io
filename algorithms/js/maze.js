@@ -3,7 +3,7 @@ const ctx = canvas.getContext("2d");
 ctx.canvas.width = innerWidth;
 ctx.canvas.height = innerHeight;
 
-var array = [
+let array = [
   [0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0],
@@ -11,15 +11,15 @@ var array = [
   [0, 0, 0, 0, 0],
 ];
 
-var visited = [];
+let visited = [];
 
 function isavailable(position) {
-  var a = position[0];
-  var b = position[1];
+  let a = position[0];
+  let b = position[1];
 
   visited.push([a, b]);
 
-  var available = [];
+  let available = [];
 
   array[a][b] = 1;
 
@@ -140,11 +140,11 @@ function draw() {
 
 button = document.getElementById("sortingbutton");
 
-var path = [[0, 0]];
+let path = [[0, 0]];
 
-var options = isavailable(path[path.length - 1]);
+let options = isavailable(path[path.length - 1]);
 
-var pick = 0;
+let pick = 0;
 
 button.onclick = function () {
   while (path.length != 0) {

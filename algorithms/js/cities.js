@@ -18,24 +18,24 @@ const ctx3 = canvas3.getContext("2d");
 ctx3.canvas.width = innerWidth / 2.1;
 ctx3.canvas.height = innerHeight / 2.2;
 
-var start = document.getElementById("calculate_cities");
+let start = document.getElementById("calculate_cities");
 
-var startvalue = false;
-var array = [];
-var pointer = 1;
-var array1 = [];
-var array2 = [];
-var array3 = [];
-var two_swap = [];
+let startvalue = false;
+let array = [];
+let pointer = 1;
+let array1 = [];
+let array2 = [];
+let array3 = [];
+let two_swap = [];
 
-var guessX = 0;
-var guessY = 0;
+let guessX = 0;
+let guessY = 0;
 
 //stores user's click on canvas
 function storeGuess(event) {
   if (startvalue == false) {
-    var x = event.offsetX;
-    var y = event.offsetY;
+    let x = event.offsetX;
+    let y = event.offsetY;
     guessX = x;
     guessY = y;
 
@@ -75,30 +75,30 @@ start.onclick = function () {
   }
 };
 
-var node_pointer = 1;
-var node_pointer1 = 1;
-var node_pointer2 = 1;
-var node_pointer3 = 1;
+let node_pointer = 1;
+let node_pointer1 = 1;
+let node_pointer2 = 1;
+let node_pointer3 = 1;
 
-var last_pointed = 0;
-var last_pointed1 = 0;
-var last_pointed2 = 0;
-var last_pointed3 = 0;
+let last_pointed = 0;
+let last_pointed1 = 0;
+let last_pointed2 = 0;
+let last_pointed3 = 0;
 
-var targetkeeper = 0;
-var targetkeeper1 = 0;
-var targetkeeper2 = 0;
-var targetkeeper3 = 0;
+let targetkeeper = 0;
+let targetkeeper1 = 0;
+let targetkeeper2 = 0;
+let targetkeeper3 = 0;
 
-var targetmemory = 0;
-var targetmemory1 = 0;
-var targetmemory2 = 0;
-var targetmemory3 = 0;
+let targetmemory = 0;
+let targetmemory1 = 0;
+let targetmemory2 = 0;
+let targetmemory3 = 0;
 
-var tourlenght = 0;
-var tourlenght1 = 0;
-var tourlenght2 = 0;
-var tourlenght3 = 0;
+let tourlenght = 0;
+let tourlenght1 = 0;
+let tourlenght2 = 0;
+let tourlenght3 = 0;
 
 function draw() {
   tourlenght = 0;
@@ -216,12 +216,12 @@ function draw() {
   }
 }
 
-var swap = document.getElementById("swap");
+let swap = document.getElementById("swap");
 
 swap.onclick = function random_swap() {
-  var x = 0;
-  var y = 0;
-  var buffer = 0;
+  let x = 0;
+  let y = 0;
+  let buffer = 0;
 
   x = Math.floor(Math.random() * array.length - 1);
   y = Math.floor(Math.random() * array.length - 1);

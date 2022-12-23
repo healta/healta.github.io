@@ -3,9 +3,9 @@ const ctx = canvas.getContext("2d");
 ctx.canvas.width = window.innerWidth;
 ctx.canvas.height = window.innerHeight - 50;
 
-var array = [];
+let array = [];
 
-var height = window.innerHeight - 50;
+let height = window.innerHeight - 50;
 
 while (array.length < window.innerWidth / 10) {
   array.push(Math.floor(Math.random() * height));
@@ -13,10 +13,10 @@ while (array.length < window.innerWidth / 10) {
 
 console.log(height, array.length);
 
-var sorting = document.getElementById("sortingbutton");
+let sorting = document.getElementById("sortingbutton");
 
 function draw() {
-  var position_offset = 0;
+  let position_offset = 0;
   ctx.fillStyle = "white";
   ctx.rect(0, 0, window.innerWidth, window.innerHeight);
   ctx.fill();
@@ -30,8 +30,8 @@ function draw() {
 }
 
 function issorted(array) {
-  var counter = 0;
-  var ii = array.length - 1;
+  let counter = 0;
+  let ii = array.length - 1;
   for (let i = 0; i < array.length - 1; i++) {
     if (array[i] <= array[i + 1]) {
       counter++;
@@ -46,9 +46,9 @@ function issorted(array) {
 }
 
 function shuffleArray(array) {
-  for (var i = array.length - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
-    var temp = array[i];
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    let temp = array[i];
     array[i] = array[j];
     array[j] = temp;
   }
@@ -66,11 +66,11 @@ function insertionSort(array) {
   }
 }
 
-var lowest;
-var holder;
+let lowest;
+let holder;
 
 function selectionSort(array) {
-  var temp = 0;
+  let temp = 0;
   for (let i = 0; i < array.length - 1; i++) {
     lowest = array[i];
     for (let ii = i + 1; ii < array.length; ii++) {

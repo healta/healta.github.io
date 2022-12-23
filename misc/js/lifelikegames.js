@@ -7,7 +7,7 @@ let y = [];
 let array = [];
 let yy = [];
 let bufferArray = [];
-var pause_state = 1;
+let pause_state = 1;
 
 for (let i = 0; i < 100; i++) {
   y = Array.from({ length: 100 }, () => Math.round(Math.random()));
@@ -258,25 +258,25 @@ canvas.addEventListener("touchmove", (e) => handleTouch(e, onPointerMove));
 //canvas.addEventListener( 'wheel', (e) => adjustZoom(e.deltaY*SCROLL_SENSITIVITY))
 
 setInterval(function () {
-  var b0 = document.getElementById("b0");
-  var b1 = document.getElementById("b1");
-  var b2 = document.getElementById("b2");
-  var b3 = document.getElementById("b3");
-  var b4 = document.getElementById("b4");
-  var b5 = document.getElementById("b5");
-  var b6 = document.getElementById("b6");
-  var b7 = document.getElementById("b7");
-  var b8 = document.getElementById("b8");
+  let b0 = document.getElementById("b0");
+  let b1 = document.getElementById("b1");
+  let b2 = document.getElementById("b2");
+  let b3 = document.getElementById("b3");
+  let b4 = document.getElementById("b4");
+  let b5 = document.getElementById("b5");
+  let b6 = document.getElementById("b6");
+  let b7 = document.getElementById("b7");
+  let b8 = document.getElementById("b8");
 
-  var s0 = document.getElementById("s0");
-  var s1 = document.getElementById("s1");
-  var s2 = document.getElementById("s2");
-  var s3 = document.getElementById("s3");
-  var s4 = document.getElementById("s4");
-  var s5 = document.getElementById("s5");
-  var s6 = document.getElementById("s6");
-  var s7 = document.getElementById("s7");
-  var s8 = document.getElementById("s8");
+  let s0 = document.getElementById("s0");
+  let s1 = document.getElementById("s1");
+  let s2 = document.getElementById("s2");
+  let s3 = document.getElementById("s3");
+  let s4 = document.getElementById("s4");
+  let s5 = document.getElementById("s5");
+  let s6 = document.getElementById("s6");
+  let s7 = document.getElementById("s7");
+  let s8 = document.getElementById("s8");
 
   let controlArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
@@ -372,7 +372,7 @@ setInterval(function () {
     controlArray[17] = 0;
   }
 
-  var pause = document.getElementById("pause");
+  let pause = document.getElementById("pause");
 
   console.log(pause_state);
 

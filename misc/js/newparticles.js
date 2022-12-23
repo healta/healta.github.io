@@ -3,117 +3,117 @@ const ctx = canvas.getContext("2d");
 ctx.canvas.width = 1820;
 ctx.canvas.height = 980;
 
-var arrayValues;
+let arrayValues;
 
-var particleOne;
-var particleTwo;
-var particleThree;
-var particleFour;
-var particleFive;
-var particleSix;
-var particleSeven;
-var particleEight;
-var particleNine;
-var particleTen;
-var particleEleven;
-var particleTwelve;
+let particleOne;
+let particleTwo;
+let particleThree;
+let particleFour;
+let particleFive;
+let particleSix;
+let particleSeven;
+let particleEight;
+let particleNine;
+let particleTen;
+let particleEleven;
+let particleTwelve;
 
 //colors
-var color1 = document.getElementById("color1");
-var color2 = document.getElementById("color2");
-var color3 = document.getElementById("color3");
-var color4 = document.getElementById("color4");
-var color5 = document.getElementById("color5");
-var color6 = document.getElementById("color6");
-var color7 = document.getElementById("color7");
-var color8 = document.getElementById("color8");
-var color9 = document.getElementById("color9");
-var color10 = document.getElementById("color10");
-var color11 = document.getElementById("color11");
-var color12 = document.getElementById("color12");
+let color1 = document.getElementById("color1");
+let color2 = document.getElementById("color2");
+let color3 = document.getElementById("color3");
+let color4 = document.getElementById("color4");
+let color5 = document.getElementById("color5");
+let color6 = document.getElementById("color6");
+let color7 = document.getElementById("color7");
+let color8 = document.getElementById("color8");
+let color9 = document.getElementById("color9");
+let color10 = document.getElementById("color10");
+let color11 = document.getElementById("color11");
+let color12 = document.getElementById("color12");
 
 //nubmers
-var input11 = document.getElementById("input11");
+let input11 = document.getElementById("input11");
 input11.value = Math.floor(Math.random() * 25);
-var input21 = document.getElementById("input21");
+let input21 = document.getElementById("input21");
 input21.value = Math.floor(Math.random() * 25);
-var input31 = document.getElementById("input31");
+let input31 = document.getElementById("input31");
 input31.value = Math.floor(Math.random() * 25);
-var input41 = document.getElementById("input41");
+let input41 = document.getElementById("input41");
 input41.value = Math.floor(Math.random() * 25);
-var input51 = document.getElementById("input51");
+let input51 = document.getElementById("input51");
 input51.value = Math.floor(Math.random() * 25);
-var input61 = document.getElementById("input61");
+let input61 = document.getElementById("input61");
 input61.value = Math.floor(Math.random() * 25);
-var input71 = document.getElementById("input71");
+let input71 = document.getElementById("input71");
 input71.value = Math.floor(Math.random() * 25);
-var input81 = document.getElementById("input81");
+let input81 = document.getElementById("input81");
 input81.value = Math.floor(Math.random() * 25);
-var input91 = document.getElementById("input91");
+let input91 = document.getElementById("input91");
 input91.value = Math.floor(Math.random() * 25);
-var input101 = document.getElementById("input101");
+let input101 = document.getElementById("input101");
 input101.value = Math.floor(Math.random() * 25);
-var input111 = document.getElementById("input111");
+let input111 = document.getElementById("input111");
 input111.value = Math.floor(Math.random() * 25);
-var input121 = document.getElementById("input121");
+let input121 = document.getElementById("input121");
 input121.value = Math.floor(Math.random() * 25);
 
 //maxspeed
-var input12 = document.getElementById("input12");
+let input12 = document.getElementById("input12");
 input12.value = Math.floor(Math.random() * 7);
-var input22 = document.getElementById("input22");
+let input22 = document.getElementById("input22");
 input22.value = Math.floor(Math.random() * 7);
-var input32 = document.getElementById("input32");
+let input32 = document.getElementById("input32");
 input32.value = Math.floor(Math.random() * 7);
-var input42 = document.getElementById("input42");
+let input42 = document.getElementById("input42");
 input42.value = Math.floor(Math.random() * 7);
-var input52 = document.getElementById("input52");
+let input52 = document.getElementById("input52");
 input52.value = Math.floor(Math.random() * 7);
-var input62 = document.getElementById("input62");
+let input62 = document.getElementById("input62");
 input62.value = Math.floor(Math.random() * 7);
-var input72 = document.getElementById("input72");
+let input72 = document.getElementById("input72");
 input72.value = Math.floor(Math.random() * 7);
-var input82 = document.getElementById("input82");
+let input82 = document.getElementById("input82");
 input82.value = Math.floor(Math.random() * 7);
-var input92 = document.getElementById("input92");
+let input92 = document.getElementById("input92");
 input92.value = Math.floor(Math.random() * 7);
-var input102 = document.getElementById("input102");
+let input102 = document.getElementById("input102");
 input102.value = Math.floor(Math.random() * 7);
-var input112 = document.getElementById("input112");
+let input112 = document.getElementById("input112");
 input112.value = Math.floor(Math.random() * 7);
-var input122 = document.getElementById("input122");
+let input122 = document.getElementById("input122");
 input122.value = Math.floor(Math.random() * 7);
 
 //interraction distance
-var input13 = document.getElementById("input13");
+let input13 = document.getElementById("input13");
 input13.value = Math.floor(Math.random() * 200 + 20);
-var input23 = document.getElementById("input23");
+let input23 = document.getElementById("input23");
 input23.value = Math.floor(Math.random() * 200 + 20);
-var input33 = document.getElementById("input33");
+let input33 = document.getElementById("input33");
 input33.value = Math.floor(Math.random() * 200 + 20);
-var input43 = document.getElementById("input43");
+let input43 = document.getElementById("input43");
 input43.value = Math.floor(Math.random() * 200 + 20);
-var input53 = document.getElementById("input53");
+let input53 = document.getElementById("input53");
 input53.value = Math.floor(Math.random() * 200 + 20);
-var input63 = document.getElementById("input63");
+let input63 = document.getElementById("input63");
 input63.value = Math.floor(Math.random() * 200 + 20);
-var input73 = document.getElementById("input73");
+let input73 = document.getElementById("input73");
 input73.value = Math.floor(Math.random() * 200 + 20);
-var input83 = document.getElementById("input83");
+let input83 = document.getElementById("input83");
 input83.value = Math.floor(Math.random() * 200 + 20);
-var input93 = document.getElementById("input93");
+let input93 = document.getElementById("input93");
 input93.value = Math.floor(Math.random() * 200 + 20);
-var input103 = document.getElementById("input103");
+let input103 = document.getElementById("input103");
 input103.value = Math.floor(Math.random() * 200 + 20);
-var input113 = document.getElementById("input113");
+let input113 = document.getElementById("input113");
 input113.value = Math.floor(Math.random() * 200 + 20);
-var input123 = document.getElementById("input123");
+let input123 = document.getElementById("input123");
 input123.value = Math.floor(Math.random() * 200 + 20);
 
-var particle = [];
+let particle = [];
 
 function initializeFunction() {
-  var input1behaviour = [];
+  let input1behaviour = [];
   input1behaviour.push([
     Math.floor(Math.random() * 2 + 1),
     Math.floor(Math.random() * 2 + 1),
@@ -128,7 +128,7 @@ function initializeFunction() {
     Math.floor(Math.random() * 2 + 1),
     Math.floor(Math.random() * 2 + 1),
   ]);
-  var input2behaviour = [];
+  let input2behaviour = [];
   input2behaviour.push([
     Math.floor(Math.random() * 2 + 1),
     Math.floor(Math.random() * 2 + 1),
@@ -143,7 +143,7 @@ function initializeFunction() {
     Math.floor(Math.random() * 2 + 1),
     Math.floor(Math.random() * 2 + 1),
   ]);
-  var input3behaviour = [];
+  let input3behaviour = [];
   input3behaviour.push([
     Math.floor(Math.random() * 2 + 1),
     Math.floor(Math.random() * 2 + 1),
@@ -158,7 +158,7 @@ function initializeFunction() {
     Math.floor(Math.random() * 2 + 1),
     Math.floor(Math.random() * 2 + 1),
   ]);
-  var input4behaviour = [];
+  let input4behaviour = [];
   input4behaviour.push([
     Math.floor(Math.random() * 2 + 1),
     Math.floor(Math.random() * 2 + 1),
@@ -173,7 +173,7 @@ function initializeFunction() {
     Math.floor(Math.random() * 2 + 1),
     Math.floor(Math.random() * 2 + 1),
   ]);
-  var input5behaviour = [];
+  let input5behaviour = [];
   input5behaviour.push([
     Math.floor(Math.random() * 2 + 1),
     Math.floor(Math.random() * 2 + 1),
@@ -188,7 +188,7 @@ function initializeFunction() {
     Math.floor(Math.random() * 2 + 1),
     Math.floor(Math.random() * 2 + 1),
   ]);
-  var input6behaviour = [];
+  let input6behaviour = [];
   input6behaviour.push([
     Math.floor(Math.random() * 2 + 1),
     Math.floor(Math.random() * 2 + 1),
@@ -203,7 +203,7 @@ function initializeFunction() {
     Math.floor(Math.random() * 2 + 1),
     Math.floor(Math.random() * 2 + 1),
   ]);
-  var input7behaviour = [];
+  let input7behaviour = [];
   input7behaviour.push([
     Math.floor(Math.random() * 2 + 1),
     Math.floor(Math.random() * 2 + 1),
@@ -218,7 +218,7 @@ function initializeFunction() {
     Math.floor(Math.random() * 2 + 1),
     Math.floor(Math.random() * 2 + 1),
   ]);
-  var input8behaviour = [];
+  let input8behaviour = [];
   input8behaviour.push([
     Math.floor(Math.random() * 2 + 1),
     Math.floor(Math.random() * 2 + 1),
@@ -233,7 +233,7 @@ function initializeFunction() {
     Math.floor(Math.random() * 2 + 1),
     Math.floor(Math.random() * 2 + 1),
   ]);
-  var input9behaviour = [];
+  let input9behaviour = [];
   input9behaviour.push([
     Math.floor(Math.random() * 2 + 1),
     Math.floor(Math.random() * 2 + 1),
@@ -248,7 +248,7 @@ function initializeFunction() {
     Math.floor(Math.random() * 2 + 1),
     Math.floor(Math.random() * 2 + 1),
   ]);
-  var input10behaviour = [];
+  let input10behaviour = [];
   input10behaviour.push([
     Math.floor(Math.random() * 2 + 1),
     Math.floor(Math.random() * 2 + 1),
@@ -263,7 +263,7 @@ function initializeFunction() {
     Math.floor(Math.random() * 2 + 1),
     Math.floor(Math.random() * 2 + 1),
   ]);
-  var input11behaviour = [];
+  let input11behaviour = [];
   input11behaviour.push([
     Math.floor(Math.random() * 2 + 1),
     Math.floor(Math.random() * 2 + 1),
@@ -278,7 +278,7 @@ function initializeFunction() {
     Math.floor(Math.random() * 2 + 1),
     Math.floor(Math.random() * 2 + 1),
   ]);
-  var input12behaviour = [];
+  let input12behaviour = [];
   input12behaviour.push([
     Math.floor(Math.random() * 2 + 1),
     Math.floor(Math.random() * 2 + 1),
@@ -441,7 +441,7 @@ function initializeFunction() {
   console.log(particle);
 }
 
-var totalparticles =
+let totalparticles =
   parseInt(input11.value) +
   parseInt(input21.value) +
   parseInt(input31.value) +

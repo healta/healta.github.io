@@ -1,31 +1,31 @@
-var output;
-var maxcharacters;
-var characters;
-var reader;
-var filename;
+let output;
+let maxcharacters;
+let characters;
+let reader;
+let filename;
 
 function encodeImageFileAsURL(element) {
-  var file = element.files[0];
+  let file = element.files[0];
   reader = new FileReader();
   reader.readAsDataURL(file);
   filename = file.name;
 }
 
-var button = document.getElementById("textlength");
+let button = document.getElementById("textlength");
 
-var send = document.getElementById("SEND");
+let send = document.getElementById("SEND");
 
-var json;
+let json;
 
-var image_text = document.getElementById("text").value;
+let image_text = document.getElementById("text").value;
 
-var buffer;
+let buffer;
 
-var blob;
+let blob;
 
-var image;
+let image;
 
-var url;
+let url;
 
 send.onclick = function () {
   const endpoint = "http://localhost:8000/steganography/";
