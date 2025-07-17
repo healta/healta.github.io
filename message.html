@@ -97,8 +97,7 @@
 
         if (hash === targetHash) {
           const finalHash = await sha256(targetHash + input);
-          const targetPage = finalHash.slice(0, 6) + ".html";
-          console.log(targetPage);
+          const target_page = finalHash.slice(0, 6) + ".html";
           window.location.href = `https://healta.github.io/misc/${target_page}.html`;
         } else {
           document.getElementById("error-msg").style.display = "block";
