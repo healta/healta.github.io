@@ -33,6 +33,15 @@
     </style>
   </head>
   <body>
-    <img src="../images/ducks.jpg" />
+    <img id="clickImage" src="../images/ducks.jpg" />
+    <audio id="mySound" src="./audio/duck.mp3" preload="auto"></audio>
+    <script>
+      document.getElementById("clickImage").addEventListener("click", () => {
+        const sound = document.getElementById("mySound");
+        sound.play().catch((e) => {
+          console.warn("Playback error:", e);
+        });
+      });
+    </script>
   </body>
 </html>
