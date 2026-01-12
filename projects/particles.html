@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Particle Simulation | Dimitar Dimitrov</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <style>
+        .particles-layout {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        @media (max-width: 1024px) {
+            .particles-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .canvas-wrapper {
+            background: #111;
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            position: relative;
+        }
+
+        #particles-canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-height: calc(100vh - 110px);
+            overflow-y: auto;
+        }
+
+        .panel {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+        }
+
+        .panel-header {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .panel-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .panel-title i {
+            color: var(--accent-primary);
+        }
+
+        .panel-body {
+            padding: 1.25rem;
+        }
+
+        .control-row {
+            margin-bottom: 1rem;
+        }
+
+        .control-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .control-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-group .btn {
+            flex: 1;
+        }
+
+        /* Particle group card */
+        .group-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .group-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .group-card:hover {
+            border-color: var(--border-light);
+        }
+
+        .group-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+        }
+
+        .group-color {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .color-preview {
+            width: 24px;
+            height: 24px;
+            border-radius: var(--radius-sm);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .color-picker {
+            opacity: 0;
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        .color-wrapper {
+            position: relative;
+            width: 24px;
+            height: 24px;
+        }
+
+        .group-name {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .remove-group {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 0.25rem;
+            transition: color 0.2s;
+        }
+
+        .remove-group:hover {
+            color: var(--highlight-rose);
+        }
+
+        .group-controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        .mini-control {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .mini-label {
+            font-size: 0.6875rem;
+            color: var(--text-muted);
+        }
+
+        .mini-input {
+            width: 100%;
+            padding: 0.375rem 0.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-size: 0.8125rem;
+            font-family: inherit;
+        }
+
+        .mini-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+        }
+
+        .add-group-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--bg-tertiary);
+            border: 1px dashed var(--border-light);
+            border-radius: var(--radius-lg);
+            color: var(--text-muted);
+            font-family: inherit;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .add-group-btn:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .play-btn {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-gradient);
+            border: none;
+            border-radius: var(--radius-full);
+            color: white;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .ctrl-btn {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ctrl-btn:hover {
+            background: var(--bg-glass);
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 0.75rem;
+        }
+
+        .stat {
+            flex: 1;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--accent-primary);
+        }
+
+        .stat-label {
+            font-size: 0.6875rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav-container">
+            <a href="../index.html" class="nav-brand">
+                <i class="fa-solid fa-arrow-left" style="margin-right: 0.5rem;"></i> DD
+            </a>
+            <span style="color: var(--text-secondary);">Particle Simulation</span>
+        </div>
+    </nav>
+
+    <div class="particles-layout">
+        <!-- Canvas -->
+        <div class="canvas-wrapper">
+            <canvas id="particles-canvas"></canvas>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Playback Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title"><i class="fa-solid fa-play"></i> Controls</span>
+                </div>
+                <div class="panel-body">
+                    <div class="control-row" style="display: flex; gap: 0.5rem; align-items: center;">
+                        <button class="play-btn" id="play-btn" title="Play/Pause">
+                            <i class="fa-solid fa-pause" id="play-icon"></i>
+                        </button>
+                        <button class="ctrl-btn" id="reset-btn" title="Reset">
+                            <i class="fa-solid fa-rotate-right"></i>
+                        </button>
+                        <button class="ctrl-btn" id="randomize-btn" title="Randomize">
+                            <i class="fa-solid fa-shuffle"></i>
+                        </button>
+                        <button class="ctrl-btn" id="clear-btn" title="Clear All">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+
+                    <div class="stats-row">
+                        <div class="stat">
+                            <div class="stat-value" id="particle-count">0</div>
+                            <div class="stat-label">Particles</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" id="group-count">0</div>
+                            <div class="stat-label">Groups</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" id="fps">60</div>
+                            <div class="stat-label">FPS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Particle Groups Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title"><i class="fa-solid fa-atom"></i> Particle Groups</span>
+                </div>
+                <div class="panel-body">
+                    <div class="group-list" id="group-list">
+                        <!-- Groups will be added here dynamically -->
+                    </div>
+
+                    <button class="add-group-btn" id="add-group-btn">
+                        <i class="fa-solid fa-plus"></i> Add Particle Group
+                    </button>
+                </div>
+            </div>
+
+            <!-- Global Settings Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title"><i class="fa-solid fa-sliders"></i> Global Settings</span>
+                </div>
+                <div class="panel-body">
+                    <div class="control-row">
+                        <label class="control-label">Friction (0 = none, 1 = max)</label>
+                        <input type="range" id="friction" class="range-slider" min="0" max="100" value="5">
+                    </div>
+
+                    <div class="control-row">
+                        <label class="control-label">Force Strength</label>
+                        <input type="range" id="force-strength" class="range-slider" min="1" max="100" value="50">
+                    </div>
+
+                    <div class="control-row">
+                        <label class="control-label">Trail Effect</label>
+                        <input type="range" id="trail" class="range-slider" min="0" max="100" value="20">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Particle Simulation - Configurable Multi-Group System
+
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Simulation state
+        let isPlaying = true;
+        let groups = [];
+        let particles = [];
+        let lastFrameTime = 0;
+        let frameCount = 0;
+        let fps = 60;
+
+        // Global settings
+        let friction = 0.95;
+        let forceStrength = 0.5;
+        let trailAlpha = 0.2;
+
+        // Colors for new groups
+        const colors = [
+            '#ef4444', '#f97316', '#eab308', '#22c55e', '#14b8a6',
+            '#06b6d4', '#3b82f6', '#6366f1', '#8b5cf6', '#d946ef', '#ec4899'
+        ];
+
+        function resizeCanvas() {
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+        }
+
+        class Particle {
+            constructor(x, y, color, groupIndex) {
+                this.x = x;
+                this.y = y;
+                this.vx = (Math.random() - 0.5) * 4;
+                this.vy = (Math.random() - 0.5) * 4;
+                this.color = color;
+                this.groupIndex = groupIndex;
+            }
+
+            update() {
+                this.vx *= friction;
+                this.vy *= friction;
+
+                // Clamp velocity
+                const maxSpeed = groups[this.groupIndex]?.maxSpeed || 5;
+                const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+                if (speed > maxSpeed) {
+                    this.vx = (this.vx / speed) * maxSpeed;
+                    this.vy = (this.vy / speed) * maxSpeed;
+                }
+
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Wrap around edges
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.y < 0) this.y = canvas.height;
+                if (this.y > canvas.height) this.y = 0;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+        }
+
+        function calculateForces() {
+            for (let i = 0; i < particles.length; i++) {
+                const p1 = particles[i];
+                const group1 = groups[p1.groupIndex];
+                if (!group1) continue;
+
+                for (let j = 0; j < particles.length; j++) {
+                    if (i === j) continue;
+
+                    const p2 = particles[j];
+
+                    const dx = p2.x - p1.x;
+                    const dy = p2.y - p1.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 10) {
+                        // Repulsion at close range
+                        const force = 0.5;
+                        p1.vx -= (dx / dist) * force;
+                        p1.vy -= (dy / dist) * force;
+                    } else if (dist < group1.interactionDist) {
+                        // Attraction/repulsion based on group behavior
+                        // Random behavior: attract (1) or repel (2)
+                        const behavior = group1.behaviors[p2.groupIndex % group1.behaviors.length];
+                        const force = forceStrength * 0.01;
+
+                        if (behavior === 1) {
+                            // Attract
+                            p1.vx += (dx / dist) * force;
+                            p1.vy += (dy / dist) * force;
+                        } else {
+                            // Repel
+                            p1.vx -= (dx / dist) * force;
+                            p1.vy -= (dy / dist) * force;
+                        }
+                    }
+                }
+            }
+        }
+
+        function createGroup(color, count, maxSpeed, interactionDist) {
+            const behaviors = [];
+            for (let i = 0; i < 12; i++) {
+                behaviors.push(Math.random() < 0.5 ? 1 : 2);
+            }
+
+            const group = {
+                color,
+                count,
+                maxSpeed,
+                interactionDist,
+                behaviors
+            };
+
+            groups.push(group);
+
+            // Create particles for this group
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle(
+                    Math.random() * canvas.width,
+                    Math.random() * canvas.height,
+                    color,
+                    groups.length - 1
+                ));
+            }
+
+            updateUI();
+            return groups.length - 1;
+        }
+
+        function removeGroup(index) {
+            // Remove particles for this group
+            particles = particles.filter(p => p.groupIndex !== index);
+
+            // Update group indices for remaining particles
+            particles.forEach(p => {
+                if (p.groupIndex > index) p.groupIndex--;
+            });
+
+            groups.splice(index, 1);
+            updateUI();
+        }
+
+        function updateGroupSettings(index, settings) {
+            if (groups[index]) {
+                Object.assign(groups[index], settings);
+
+                // Update particle colors
+                particles.forEach(p => {
+                    if (p.groupIndex === index) {
+                        p.color = settings.color || groups[index].color;
+                    }
+                });
+            }
+        }
+
+        function clearAll() {
+            particles = [];
+            groups = [];
+            updateUI();
+        }
+
+        function resetPositions() {
+            particles.forEach(p => {
+                p.x = Math.random() * canvas.width;
+                p.y = Math.random() * canvas.height;
+                p.vx = (Math.random() - 0.5) * 4;
+                p.vy = (Math.random() - 0.5) * 4;
+            });
+        }
+
+        function randomizeSettings() {
+            groups.forEach((g, i) => {
+                g.behaviors = [];
+                for (let j = 0; j < 12; j++) {
+                    g.behaviors.push(Math.random() < 0.5 ? 1 : 2);
+                }
+            });
+        }
+
+        function animate() {
+            if (isPlaying) {
+                // Semi-transparent background for trails
+                ctx.fillStyle = `rgba(17, 17, 17, ${1 - trailAlpha})`;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                calculateForces();
+
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+
+                // FPS calculation
+                frameCount++;
+                const now = performance.now();
+                if (now - lastFrameTime >= 1000) {
+                    fps = frameCount;
+                    frameCount = 0;
+                    lastFrameTime = now;
+                    document.getElementById('fps').textContent = fps;
+                }
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        function updateUI() {
+            document.getElementById('particle-count').textContent = particles.length;
+            document.getElementById('group-count').textContent = groups.length;
+
+            renderGroupList();
+        }
+
+        function renderGroupList() {
+            const list = document.getElementById('group-list');
+            list.innerHTML = '';
+
+            groups.forEach((group, index) => {
+                const card = document.createElement('div');
+                card.className = 'group-card';
+                card.innerHTML = `
+          <div class="group-header">
+            <div class="group-color">
+              <div class="color-wrapper">
+                <div class="color-preview" style="background: ${group.color}"></div>
+                <input type="color" class="color-picker" value="${group.color}" data-index="${index}">
+              </div>
+              <span class="group-name">Group ${index + 1}</span>
+            </div>
+            <button class="remove-group" data-index="${index}">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div class="group-controls">
+            <div class="mini-control">
+              <span class="mini-label">Count</span>
+              <input type="number" class="mini-input count-input" value="${group.count}" min="1" max="200" data-index="${index}">
+            </div>
+            <div class="mini-control">
+              <span class="mini-label">Max Speed</span>
+              <input type="number" class="mini-input speed-input" value="${group.maxSpeed}" min="1" max="20" data-index="${index}">
+            </div>
+            <div class="mini-control" style="grid-column: span 2;">
+              <span class="mini-label">Interaction Distance</span>
+              <input type="range" class="range-slider dist-input" value="${group.interactionDist}" min="20" max="300" data-index="${index}">
+            </div>
+          </div>
+        `;
+                list.appendChild(card);
+            });
+
+            // Add event listeners
+            document.querySelectorAll('.color-picker').forEach(el => {
+                el.addEventListener('change', (e) => {
+                    const index = parseInt(e.target.dataset.index);
+                    updateGroupSettings(index, { color: e.target.value });
+                    e.target.previousElementSibling.style.background = e.target.value;
+                });
+            });
+
+            document.querySelectorAll('.remove-group').forEach(el => {
+                el.addEventListener('click', (e) => {
+                    const index = parseInt(e.target.closest('button').dataset.index);
+                    removeGroup(index);
+                });
+            });
+
+            document.querySelectorAll('.count-input').forEach(el => {
+                el.addEventListener('change', (e) => {
+                    const index = parseInt(e.target.dataset.index);
+                    const newCount = parseInt(e.target.value);
+                    const oldCount = groups[index].count;
+
+                    groups[index].count = newCount;
+
+                    if (newCount > oldCount) {
+                        // Add more particles
+                        for (let i = 0; i < newCount - oldCount; i++) {
+                            particles.push(new Particle(
+                                Math.random() * canvas.width,
+                                Math.random() * canvas.height,
+                                groups[index].color,
+                                index
+                            ));
+                        }
+                    } else if (newCount < oldCount) {
+                        // Remove some particles
+                        let toRemove = oldCount - newCount;
+                        particles = particles.filter(p => {
+                            if (p.groupIndex === index && toRemove > 0) {
+                                toRemove--;
+                                return false;
+                            }
+                            return true;
+                        });
+                    }
+
+                    updateUI();
+                });
+            });
+
+            document.querySelectorAll('.speed-input').forEach(el => {
+                el.addEventListener('change', (e) => {
+                    const index = parseInt(e.target.dataset.index);
+                    updateGroupSettings(index, { maxSpeed: parseInt(e.target.value) });
+                });
+            });
+
+            document.querySelectorAll('.dist-input').forEach(el => {
+                el.addEventListener('input', (e) => {
+                    const index = parseInt(e.target.dataset.index);
+                    updateGroupSettings(index, { interactionDist: parseInt(e.target.value) });
+                });
+            });
+        }
+
+        // Initialize
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Create some initial groups
+        createGroup('#ef4444', 40, 5, 150);
+        createGroup('#3b82f6', 40, 4, 120);
+        createGroup('#22c55e', 30, 6, 100);
+
+        // UI Event Listeners
+        document.getElementById('play-btn').addEventListener('click', () => {
+            isPlaying = !isPlaying;
+            document.getElementById('play-icon').className = isPlaying ? 'fa-solid fa-pause' : 'fa-solid fa-play';
+        });
+
+        document.getElementById('reset-btn').addEventListener('click', resetPositions);
+        document.getElementById('randomize-btn').addEventListener('click', randomizeSettings);
+        document.getElementById('clear-btn').addEventListener('click', clearAll);
+
+        document.getElementById('add-group-btn').addEventListener('click', () => {
+            const color = colors[groups.length % colors.length];
+            createGroup(color, 30, 5, 100);
+        });
+
+        // Global settings
+        document.getElementById('friction').addEventListener('input', (e) => {
+            friction = 1 - (e.target.value / 1000);
+        });
+
+        document.getElementById('force-strength').addEventListener('input', (e) => {
+            forceStrength = e.target.value / 100;
+        });
+
+        document.getElementById('trail').addEventListener('input', (e) => {
+            trailAlpha = e.target.value / 100;
+        });
+
+        // Start animation
+        animate();
+    </script>
+</body>
+
+</html>

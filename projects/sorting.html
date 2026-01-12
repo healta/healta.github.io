@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithms | Dimitar Dimitrov</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <style>
+        .sorting-layout {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            padding-top: 60px;
+        }
+
+        .canvas-container {
+            flex: 1;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        #sorting-canvas {
+            display: block;
+        }
+
+        .controls-bar {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-subtle);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .control-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .algorithm-select {
+            padding: 0.5rem 1rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.875rem;
+            cursor: pointer;
+        }
+
+        .algorithm-select:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+        }
+
+        .ctrl-btn {
+            padding: 0.625rem 1rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            font-family: inherit;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .ctrl-btn:hover {
+            background: var(--bg-glass);
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .ctrl-btn.primary {
+            background: var(--accent-gradient);
+            border: none;
+            color: white;
+        }
+
+        .ctrl-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .stat-display {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .stat-display span {
+            color: var(--accent-primary);
+            font-weight: 600;
+            font-family: var(--font-mono);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav-container">
+            <a href="../index.html" class="nav-brand">
+                <i class="fa-solid fa-arrow-left" style="margin-right: 0.5rem;"></i> DD
+            </a>
+            <span style="color: var(--text-secondary);">Sorting Algorithms</span>
+        </div>
+    </nav>
+
+    <div class="sorting-layout">
+        <div class="canvas-container">
+            <canvas id="sorting-canvas"></canvas>
+        </div>
+
+        <div class="controls-bar">
+            <div class="control-group">
+                <button class="ctrl-btn primary" id="sort-btn">
+                    <i class="fa-solid fa-play"></i> Sort
+                </button>
+                <button class="ctrl-btn" id="reset-btn">
+                    <i class="fa-solid fa-shuffle"></i> Shuffle
+                </button>
+            </div>
+
+            <div class="control-group">
+                <span class="control-label">Algorithm</span>
+                <select id="algorithm" class="algorithm-select">
+                    <option value="insertion">Insertion Sort</option>
+                    <option value="selection">Selection Sort</option>
+                    <option value="bubble">Bubble Sort</option>
+                    <option value="quick">Quick Sort</option>
+                    <option value="merge">Merge Sort</option>
+                    <option value="bogo">Bogosort (chaos)</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <span class="control-label">Speed</span>
+                <input type="range" id="speed" class="range-slider" min="1" max="100" value="50" style="width: 100px;">
+            </div>
+
+            <div class="control-group">
+                <span class="control-label">Size</span>
+                <input type="range" id="size" class="range-slider" min="20" max="200" value="100" style="width: 100px;">
+            </div>
+
+            <div class="stat-display">
+                Comparisons: <span id="comparisons">0</span>
+            </div>
+
+            <div class="stat-display">
+                Swaps: <span id="swaps">0</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('sorting-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let array = [];
+        let arraySize = 100;
+        let speed = 50;
+        let sorting = false;
+        let comparisons = 0;
+        let swaps = 0;
+        let highlightIndices = [];
+
+        function resizeCanvas() {
+            const container = canvas.parentElement;
+            canvas.width = container.clientWidth - 32;
+            canvas.height = container.clientHeight - 32;
+            generateArray();
+        }
+
+        function generateArray() {
+            array = [];
+            const maxHeight = canvas.height - 20;
+            for (let i = 0; i < arraySize; i++) {
+                array.push(Math.floor(Math.random() * maxHeight) + 10);
+            }
+            comparisons = 0;
+            swaps = 0;
+            updateStats();
+            draw();
+        }
+
+        function draw() {
+            ctx.fillStyle = '#12121a';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const barWidth = canvas.width / array.length;
+
+            array.forEach((val, i) => {
+                let color = '#6366f1';
+
+                if (highlightIndices.includes(i)) {
+                    color = '#ef4444';
+                }
+
+                ctx.fillStyle = color;
+                ctx.fillRect(
+                    i * barWidth + 1,
+                    canvas.height - val,
+                    barWidth - 2,
+                    val
+                );
+            });
+        }
+
+        function updateStats() {
+            document.getElementById('comparisons').textContent = comparisons;
+            document.getElementById('swaps').textContent = swaps;
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function swap(i, j) {
+            [array[i], array[j]] = [array[j], array[i]];
+            swaps++;
+            updateStats();
+        }
+
+        // Sorting algorithms
+        async function insertionSort() {
+            for (let i = 1; i < array.length && sorting; i++) {
+                let key = array[i];
+                let j = i - 1;
+
+                while (j >= 0 && array[j] > key && sorting) {
+                    comparisons++;
+                    highlightIndices = [j, j + 1];
+                    array[j + 1] = array[j];
+                    swaps++;
+                    j--;
+                    draw();
+                    updateStats();
+                    await sleep(101 - speed);
+                }
+                array[j + 1] = key;
+            }
+            highlightIndices = [];
+            draw();
+        }
+
+        async function selectionSort() {
+            for (let i = 0; i < array.length - 1 && sorting; i++) {
+                let minIdx = i;
+
+                for (let j = i + 1; j < array.length && sorting; j++) {
+                    comparisons++;
+                    highlightIndices = [minIdx, j];
+                    draw();
+                    updateStats();
+                    await sleep(101 - speed);
+
+                    if (array[j] < array[minIdx]) {
+                        minIdx = j;
+                    }
+                }
+
+                if (minIdx !== i) {
+                    await swap(i, minIdx);
+                    draw();
+                }
+            }
+            highlightIndices = [];
+            draw();
+        }
+
+        async function bubbleSort() {
+            for (let i = 0; i < array.length - 1 && sorting; i++) {
+                for (let j = 0; j < array.length - i - 1 && sorting; j++) {
+                    comparisons++;
+                    highlightIndices = [j, j + 1];
+                    draw();
+                    updateStats();
+                    await sleep(101 - speed);
+
+                    if (array[j] > array[j + 1]) {
+                        await swap(j, j + 1);
+                        draw();
+                    }
+                }
+            }
+            highlightIndices = [];
+            draw();
+        }
+
+        async function quickSort(low = 0, high = array.length - 1) {
+            if (low < high && sorting) {
+                const pi = await partition(low, high);
+                await quickSort(low, pi - 1);
+                await quickSort(pi + 1, high);
+            }
+            if (low === 0 && high === array.length - 1) {
+                highlightIndices = [];
+                draw();
+            }
+        }
+
+        async function partition(low, high) {
+            const pivot = array[high];
+            let i = low - 1;
+
+            for (let j = low; j < high && sorting; j++) {
+                comparisons++;
+                highlightIndices = [j, high];
+                draw();
+                updateStats();
+                await sleep(101 - speed);
+
+                if (array[j] < pivot) {
+                    i++;
+                    await swap(i, j);
+                    draw();
+                }
+            }
+
+            await swap(i + 1, high);
+            draw();
+            return i + 1;
+        }
+
+        async function mergeSort(l = 0, r = array.length - 1) {
+            if (l < r && sorting) {
+                const m = Math.floor((l + r) / 2);
+                await mergeSort(l, m);
+                await mergeSort(m + 1, r);
+                await merge(l, m, r);
+            }
+            if (l === 0 && r === array.length - 1) {
+                highlightIndices = [];
+                draw();
+            }
+        }
+
+        async function merge(l, m, r) {
+            const left = array.slice(l, m + 1);
+            const right = array.slice(m + 1, r + 1);
+
+            let i = 0, j = 0, k = l;
+
+            while (i < left.length && j < right.length && sorting) {
+                comparisons++;
+                highlightIndices = [k];
+                draw();
+                updateStats();
+                await sleep(101 - speed);
+
+                if (left[i] <= right[j]) {
+                    array[k] = left[i];
+                    i++;
+                } else {
+                    array[k] = right[j];
+                    j++;
+                }
+                swaps++;
+                k++;
+            }
+
+            while (i < left.length) {
+                array[k] = left[i];
+                i++;
+                k++;
+                swaps++;
+            }
+
+            while (j < right.length) {
+                array[k] = right[j];
+                j++;
+                k++;
+                swaps++;
+            }
+
+            updateStats();
+            draw();
+        }
+
+        async function bogoSort() {
+            while (!isSorted() && sorting) {
+                shuffle();
+                comparisons += array.length;
+                swaps += array.length;
+                highlightIndices = [Math.floor(Math.random() * array.length)];
+                draw();
+                updateStats();
+                await sleep(101 - speed);
+            }
+            highlightIndices = [];
+            draw();
+        }
+
+        function isSorted() {
+            for (let i = 0; i < array.length - 1; i++) {
+                if (array[i] > array[i + 1]) return false;
+            }
+            return true;
+        }
+
+        function shuffle() {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // Event listeners
+        document.getElementById('sort-btn').addEventListener('click', async () => {
+            if (sorting) {
+                sorting = false;
+                document.getElementById('sort-btn').innerHTML = '<i class="fa-solid fa-play"></i> Sort';
+                return;
+            }
+
+            sorting = true;
+            document.getElementById('sort-btn').innerHTML = '<i class="fa-solid fa-stop"></i> Stop';
+
+            const algo = document.getElementById('algorithm').value;
+
+            switch (algo) {
+                case 'insertion': await insertionSort(); break;
+                case 'selection': await selectionSort(); break;
+                case 'bubble': await bubbleSort(); break;
+                case 'quick': await quickSort(); break;
+                case 'merge': await mergeSort(); break;
+                case 'bogo': await bogoSort(); break;
+            }
+
+            sorting = false;
+            document.getElementById('sort-btn').innerHTML = '<i class="fa-solid fa-play"></i> Sort';
+        });
+
+        document.getElementById('reset-btn').addEventListener('click', () => {
+            sorting = false;
+            generateArray();
+        });
+
+        document.getElementById('speed').addEventListener('input', (e) => {
+            speed = parseInt(e.target.value);
+        });
+
+        document.getElementById('size').addEventListener('input', (e) => {
+            arraySize = parseInt(e.target.value);
+            if (!sorting) generateArray();
+        });
+
+        // Initialize
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+    </script>
+</body>
+
+</html>

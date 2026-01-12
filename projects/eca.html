@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elementary Cellular Automaton | Dimitar Dimitrov</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <style>
+        .eca-layout {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        @media (max-width: 1024px) {
+            .eca-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .canvas-wrapper {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            overflow: auto;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        #eca-canvas {
+            display: block;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .panel {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+        }
+
+        .panel-header {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .panel-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .panel-title i {
+            color: var(--accent-primary);
+        }
+
+        .panel-body {
+            padding: 1.25rem;
+        }
+
+        .control-row {
+            margin-bottom: 1rem;
+        }
+
+        .control-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .control-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .rule-number-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            background: var(--bg-tertiary);
+            border: 2px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            color: var(--accent-primary);
+            font-family: var(--font-mono);
+        }
+
+        .rule-number-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+        }
+
+        .rule-preview {
+            display: flex;
+            justify-content: center;
+            gap: 0.25rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .rule-case {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .rule-pattern {
+            display: flex;
+            gap: 1px;
+        }
+
+        .rule-cell {
+            width: 12px;
+            height: 12px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .rule-cell.on {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+        }
+
+        .rule-result {
+            width: 12px;
+            height: 12px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .rule-result.on {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+        }
+
+        .rule-result:hover {
+            transform: scale(1.2);
+            border-color: var(--accent-secondary);
+        }
+
+        .preset-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+        }
+
+        .preset-btn {
+            padding: 0.5rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .preset-btn:hover {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .ctrl-btn {
+            flex: 1;
+            padding: 0.625rem 1rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            font-family: inherit;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .ctrl-btn:hover {
+            background: var(--bg-glass);
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .ctrl-btn.primary {
+            background: var(--accent-gradient);
+            border: none;
+            color: white;
+        }
+
+        .ctrl-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .size-display {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .info-text {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .famous-rules {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .famous-rule {
+            padding: 0.5rem 0.75rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .famous-rule:hover {
+            background: rgba(99, 102, 241, 0.15);
+            border-color: var(--accent-primary);
+        }
+
+        .famous-rule strong {
+            color: var(--accent-primary);
+            font-family: var(--font-mono);
+        }
+
+        .famous-rule span {
+            color: var(--text-muted);
+            display: block;
+            margin-top: 0.125rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav-container">
+            <a href="../index.html" class="nav-brand">
+                <i class="fa-solid fa-arrow-left" style="margin-right: 0.5rem;"></i> DD
+            </a>
+            <span style="color: var(--text-secondary);">Elementary Cellular Automaton</span>
+        </div>
+    </nav>
+
+    <div class="eca-layout">
+        <!-- Canvas -->
+        <div class="canvas-wrapper">
+            <canvas id="eca-canvas"></canvas>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Rule Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title"><i class="fa-solid fa-sliders"></i> Rule</span>
+                </div>
+                <div class="panel-body">
+                    <div class="control-row">
+                        <label class="control-label">Rule Number (0-255)</label>
+                        <input type="number" id="rule-number" class="rule-number-input" value="110" min="0" max="255">
+                    </div>
+
+                    <div class="rule-preview" id="rule-preview">
+                        <!-- Rule visualization will be generated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Famous Rules Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title"><i class="fa-solid fa-star"></i> Famous Rules</span>
+                </div>
+                <div class="panel-body">
+                    <div class="famous-rules">
+                        <div class="famous-rule" data-rule="30">
+                            <strong>Rule 30</strong>
+                            <span>Chaotic</span>
+                        </div>
+                        <div class="famous-rule" data-rule="90">
+                            <strong>Rule 90</strong>
+                            <span>Sierpiński</span>
+                        </div>
+                        <div class="famous-rule" data-rule="110">
+                            <strong>Rule 110</strong>
+                            <span>Turing complete</span>
+                        </div>
+                        <div class="famous-rule" data-rule="184">
+                            <strong>Rule 184</strong>
+                            <span>Traffic flow</span>
+                        </div>
+                        <div class="famous-rule" data-rule="22">
+                            <strong>Rule 22</strong>
+                            <span>Nested</span>
+                        </div>
+                        <div class="famous-rule" data-rule="126">
+                            <strong>Rule 126</strong>
+                            <span>Complex</span>
+                        </div>
+                    </div>
+
+                    <div class="btn-group" style="margin-top: 1rem;">
+                        <button class="ctrl-btn" id="random-rule">
+                            <i class="fa-solid fa-shuffle"></i> Random
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title"><i class="fa-solid fa-gear"></i> Settings</span>
+                </div>
+                <div class="panel-body">
+                    <div class="control-row">
+                        <label class="control-label">Width (cells)</label>
+                        <input type="range" id="width-slider" class="range-slider" min="100" max="500" value="300">
+                        <div class="size-display">
+                            <span>100</span>
+                            <span id="width-value">300</span>
+                            <span>500</span>
+                        </div>
+                    </div>
+
+                    <div class="control-row">
+                        <label class="control-label">Generations</label>
+                        <input type="range" id="gen-slider" class="range-slider" min="50" max="400" value="200">
+                        <div class="size-display">
+                            <span>50</span>
+                            <span id="gen-value">200</span>
+                            <span>400</span>
+                        </div>
+                    </div>
+
+                    <div class="control-row">
+                        <label class="control-label">Initial Condition</label>
+                        <select id="initial-condition" class="preset-select"
+                            style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); color: var(--text-primary);">
+                            <option value="single">Single cell</option>
+                            <option value="random">Random</option>
+                        </select>
+                    </div>
+
+                    <div class="btn-group" style="margin-top: 1rem;">
+                        <button class="ctrl-btn primary" id="generate-btn">
+                            <i class="fa-solid fa-play"></i> Generate
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title"><i class="fa-solid fa-circle-info"></i> About</span>
+                </div>
+                <div class="panel-body">
+                    <p class="info-text">
+                        Elementary cellular automata are 1D systems where each cell's next state
+                        depends on its current state and its two neighbors. With 8 possible
+                        neighborhood patterns and 2 output states each, there are 2⁸ = 256 possible rules.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('eca-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let rule = 110;
+        let width = 300;
+        let generations = 200;
+        let initialCondition = 'single';
+        let cellSize = 3;
+
+        // Generate rule from number
+        function getRuleBits(ruleNum) {
+            const bits = [];
+            for (let i = 0; i < 8; i++) {
+                bits.push((ruleNum >> i) & 1);
+            }
+            return bits;
+        }
+
+        // Update rule preview
+        function updateRulePreview() {
+            const preview = document.getElementById('rule-preview');
+            preview.innerHTML = '';
+
+            const bits = getRuleBits(rule);
+
+            for (let i = 7; i >= 0; i--) {
+                const pattern = [
+                    (i >> 2) & 1,
+                    (i >> 1) & 1,
+                    i & 1
+                ];
+
+                const caseDiv = document.createElement('div');
+                caseDiv.className = 'rule-case';
+
+                const patternDiv = document.createElement('div');
+                patternDiv.className = 'rule-pattern';
+
+                pattern.forEach(p => {
+                    const cell = document.createElement('div');
+                    cell.className = 'rule-cell' + (p ? ' on' : '');
+                    patternDiv.appendChild(cell);
+                });
+
+                const resultDiv = document.createElement('div');
+                resultDiv.className = 'rule-result' + (bits[i] ? ' on' : '');
+                resultDiv.dataset.index = i;
+                resultDiv.addEventListener('click', () => {
+                    bits[i] = bits[i] ? 0 : 1;
+                    rule = bits.reduce((acc, bit, idx) => acc + (bit << idx), 0);
+                    document.getElementById('rule-number').value = rule;
+                    updateRulePreview();
+                });
+
+                caseDiv.appendChild(patternDiv);
+                caseDiv.appendChild(resultDiv);
+                preview.appendChild(caseDiv);
+            }
+        }
+
+        // Generate the automaton
+        function generate() {
+            canvas.width = width * cellSize;
+            canvas.height = generations * cellSize;
+
+            // Initialize first row
+            let current = new Uint8Array(width);
+
+            if (initialCondition === 'single') {
+                current[Math.floor(width / 2)] = 1;
+            } else {
+                for (let i = 0; i < width; i++) {
+                    current[i] = Math.random() < 0.5 ? 1 : 0;
+                }
+            }
+
+            const bits = getRuleBits(rule);
+
+            // Colors
+            ctx.fillStyle = '#12121a';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#6366f1';
+
+            // Draw and evolve
+            for (let gen = 0; gen < generations; gen++) {
+                // Draw current generation
+                for (let i = 0; i < width; i++) {
+                    if (current[i]) {
+                        ctx.fillRect(i * cellSize, gen * cellSize, cellSize - 0.5, cellSize - 0.5);
+                    }
+                }
+
+                // Calculate next generation
+                const next = new Uint8Array(width);
+                for (let i = 0; i < width; i++) {
+                    const left = current[(i - 1 + width) % width];
+                    const center = current[i];
+                    const right = current[(i + 1) % width];
+
+                    const index = (left << 2) | (center << 1) | right;
+                    next[i] = bits[index];
+                }
+
+                current = next;
+            }
+        }
+
+        // Event listeners
+        document.getElementById('rule-number').addEventListener('change', (e) => {
+            rule = Math.max(0, Math.min(255, parseInt(e.target.value) || 0));
+            e.target.value = rule;
+            updateRulePreview();
+            generate();
+        });
+
+        document.getElementById('width-slider').addEventListener('input', (e) => {
+            width = parseInt(e.target.value);
+            document.getElementById('width-value').textContent = width;
+        });
+
+        document.getElementById('gen-slider').addEventListener('input', (e) => {
+            generations = parseInt(e.target.value);
+            document.getElementById('gen-value').textContent = generations;
+        });
+
+        document.getElementById('initial-condition').addEventListener('change', (e) => {
+            initialCondition = e.target.value;
+        });
+
+        document.getElementById('generate-btn').addEventListener('click', generate);
+
+        document.getElementById('random-rule').addEventListener('click', () => {
+            rule = Math.floor(Math.random() * 256);
+            document.getElementById('rule-number').value = rule;
+            updateRulePreview();
+            generate();
+        });
+
+        // Famous rules
+        document.querySelectorAll('.famous-rule').forEach(el => {
+            el.addEventListener('click', () => {
+                rule = parseInt(el.dataset.rule);
+                document.getElementById('rule-number').value = rule;
+                updateRulePreview();
+                generate();
+            });
+        });
+
+        // Initial generation
+        updateRulePreview();
+        generate();
+    </script>
+</body>
+
+</html>

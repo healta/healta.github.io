@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polyrhythm Visualizer | Dimitar Dimitrov</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        .polyrhythm-layout {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            padding-top: 60px;
+        }
+
+        .canvas-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a0f 100%);
+        }
+
+        #polyrhythm-canvas {
+            display: block;
+        }
+
+        .controls-bar {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-subtle);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .control-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .control-value {
+            font-size: 0.875rem;
+            color: var(--accent-primary);
+            min-width: 40px;
+        }
+
+        .play-btn {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-gradient);
+            border: none;
+            border-radius: var(--radius-full);
+            color: white;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .ctrl-btn {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ctrl-btn:hover {
+            background: var(--bg-glass);
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav-container">
+            <a href="../index.html" class="nav-brand">
+                <i class="fa-solid fa-arrow-left" style="margin-right: 0.5rem;"></i> DD
+            </a>
+            <span style="color: var(--text-secondary);">Polyrhythm Visualizer</span>
+        </div>
+    </nav>
+
+    <div class="polyrhythm-layout">
+        <div class="canvas-container">
+            <canvas id="polyrhythm-canvas"></canvas>
+        </div>
+
+        <div class="controls-bar">
+            <div class="control-group">
+                <button class="play-btn" id="play-btn" title="Play/Pause">
+                    <i class="fa-solid fa-pause" id="play-icon"></i>
+                </button>
+                <button class="ctrl-btn" id="reset-btn" title="Reset">
+                    <i class="fa-solid fa-rotate-right"></i>
+                </button>
+            </div>
+
+            <div class="control-group">
+                <span class="control-label">Circles</span>
+                <input type="range" id="circle-count" class="range-slider" min="3" max="30" value="21"
+                    style="width: 120px;">
+                <span class="control-value" id="circle-count-value">21</span>
+            </div>
+
+            <div class="control-group">
+                <span class="control-label">Base Speed</span>
+                <input type="range" id="base-speed" class="range-slider" min="50" max="200" value="100"
+                    style="width: 120px;">
+                <span class="control-value" id="base-speed-value">1.0x</span>
+            </div>
+
+            <div class="control-group">
+                <span class="control-label">Volume</span>
+                <input type="range" id="volume" class="range-slider" min="0" max="100" value="20" style="width: 100px;">
+                <span class="control-value" id="volume-value">20%</span>
+            </div>
+
+            <div class="control-group">
+                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                    <input type="checkbox" id="show-trails" checked style="accent-color: var(--accent-primary);">
+                    <span class="control-label" style="margin: 0;">Trails</span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('polyrhythm-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let isPlaying = true;
+        let circleCount = 21;
+        let baseSpeed = 1;
+        let volume = 0.2;
+        let showTrails = true;
+
+        let centerX, centerY, radius;
+        let circles = [];
+
+        // Color palette
+        const colors = [
+            '#ef4444', '#f97316', '#f59e0b', '#eab308', '#84cc16',
+            '#22c55e', '#10b981', '#14b8a6', '#06b6d4', '#0ea5e9',
+            '#3b82f6', '#6366f1', '#8b5cf6', '#a855f7', '#d946ef',
+            '#ec4899', '#f43f5e', '#fb7185', '#fda4af', '#fecdd3',
+            '#fef08a', '#a3e635', '#4ade80', '#2dd4bf', '#22d3ee',
+            '#38bdf8', '#818cf8', '#c084fc', '#e879f9', '#f472b6'
+        ];
+
+        function resizeCanvas() {
+            const container = canvas.parentElement;
+            canvas.width = container.clientWidth;
+            canvas.height = container.clientHeight;
+
+            centerX = canvas.width / 2;
+            centerY = canvas.height / 2;
+            radius = Math.min(canvas.width, canvas.height) / 2 - 40;
+
+            initCircles();
+        }
+
+        function initCircles() {
+            circles = [];
+            const angleStep = (2 * Math.PI) / circleCount;
+
+            for (let i = 0; i < circleCount; i++) {
+                const angle = i * angleStep;
+                const speed = 1 + (i * 0.1);
+
+                circles.push({
+                    angle: angle,
+                    speed: speed,
+                    x: centerX + radius * Math.cos(angle),
+                    y: centerY + radius * Math.sin(angle),
+                    direction: 1,
+                    baseAngle: angle,
+                    color: colors[i % colors.length],
+                    lastBounce: 0
+                });
+            }
+        }
+
+        function playSound(index) {
+            const now = Date.now();
+            if (now - circles[index].lastBounce < 50) return; // Debounce
+            circles[index].lastBounce = now;
+
+            const audioIndex = index % 21; // We have 21 audio files
+            const audio = new Audio(`audio/vibraphone-key-${audioIndex}.wav`);
+            audio.volume = volume;
+            audio.play().catch(() => { }); // Ignore autoplay errors
+        }
+
+        function update() {
+            for (let i = 0; i < circles.length; i++) {
+                const circle = circles[i];
+                const angle = circle.baseAngle;
+
+                // Move along the line through center
+                circle.x += circle.speed * baseSpeed * circle.direction * Math.cos(angle);
+                circle.y += circle.speed * baseSpeed * circle.direction * Math.sin(angle);
+
+                // Check if passed the edge
+                const distFromCenter = Math.sqrt(
+                    Math.pow(circle.x - centerX, 2) +
+                    Math.pow(circle.y - centerY, 2)
+                );
+
+                if (distFromCenter > radius) {
+                    circle.direction *= -1;
+
+                    // Reset to edge
+                    circle.x = centerX + radius * Math.cos(angle) * (circle.direction < 0 ? 1 : -1);
+                    circle.y = centerY + radius * Math.sin(angle) * (circle.direction < 0 ? 1 : -1);
+
+                    playSound(i);
+                }
+            }
+        }
+
+        function draw() {
+            // Background with trail effect
+            if (showTrails) {
+                ctx.fillStyle = 'rgba(10, 10, 15, 0.3)';
+            } else {
+                ctx.fillStyle = '#0a0a0f';
+            }
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw main circle
+            ctx.strokeStyle = 'rgba(99, 102, 241, 0.3)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // Draw center point
+            ctx.fillStyle = 'rgba(99, 102, 241, 0.5)';
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 4, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Draw lines from circles to center (subtle)
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i < circles.length; i++) {
+                const circle = circles[i];
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                const endX = centerX + radius * Math.cos(circle.baseAngle);
+                const endY = centerY + radius * Math.sin(circle.baseAngle);
+                ctx.lineTo(endX, endY);
+                ctx.stroke();
+            }
+
+            // Draw small circles
+            for (let i = 0; i < circles.length; i++) {
+                const circle = circles[i];
+
+                // Glow effect
+                const gradient = ctx.createRadialGradient(
+                    circle.x, circle.y, 0,
+                    circle.x, circle.y, 15
+                );
+                gradient.addColorStop(0, circle.color);
+                gradient.addColorStop(1, 'transparent');
+
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.arc(circle.x, circle.y, 15, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Core circle
+                ctx.fillStyle = circle.color;
+                ctx.beginPath();
+                ctx.arc(circle.x, circle.y, 5, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function animate() {
+            if (isPlaying) {
+                update();
+            }
+            draw();
+            requestAnimationFrame(animate);
+        }
+
+        // Initialize
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Controls
+        document.getElementById('play-btn').addEventListener('click', () => {
+            isPlaying = !isPlaying;
+            document.getElementById('play-icon').className = isPlaying ? 'fa-solid fa-pause' : 'fa-solid fa-play';
+        });
+
+        document.getElementById('reset-btn').addEventListener('click', () => {
+            initCircles();
+        });
+
+        document.getElementById('circle-count').addEventListener('input', (e) => {
+            circleCount = parseInt(e.target.value);
+            document.getElementById('circle-count-value').textContent = circleCount;
+            initCircles();
+        });
+
+        document.getElementById('base-speed').addEventListener('input', (e) => {
+            baseSpeed = e.target.value / 100;
+            document.getElementById('base-speed-value').textContent = baseSpeed.toFixed(1) + 'x';
+        });
+
+        document.getElementById('volume').addEventListener('input', (e) => {
+            volume = e.target.value / 100;
+            document.getElementById('volume-value').textContent = e.target.value + '%';
+        });
+
+        document.getElementById('show-trails').addEventListener('change', (e) => {
+            showTrails = e.target.checked;
+        });
+
+        // Start
+        animate();
+    </script>
+</body>
+
+</html>
